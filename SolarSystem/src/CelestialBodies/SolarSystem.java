@@ -4,11 +4,35 @@
  * and open the template in the editor.
  */
 package CelestialBodies;
+import java.util.*;
 
 /**
  *
  * @author jnuez_000
  */
 public class SolarSystem {
+    private List<Planet> planet = new ArrayList<Planet>();
+    private List<Star> star = new ArrayList<Star>();
+    
+    public void addPlanet(double mass, double l)
+    {
+        planet.add(new Planet(mass, l));
+    }
+    
+    public void addStar(double mass)
+    {
+        star.add(new Star(mass));
+    }
+    
+    public List<Planet> getPlanets()
+    {
+        return planet;
+    }
+    
+    public List<Star> getStars()
+    {
+        return star;
+    }
+    
     
 }
