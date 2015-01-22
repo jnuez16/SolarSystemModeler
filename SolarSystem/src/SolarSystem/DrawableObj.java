@@ -35,5 +35,9 @@ public class DrawableObj {
 
         g.draw(new Ellipse2D.Double(100, 100, 150, 150));
     }
+    
+    public void drawStar(Graphics2D g, int x, int y){
+                g.draw(new Ellipse2D.Double(x, y, x + 50, y + 50));
+    }
 
 }

@@ -10,11 +10,6 @@ import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Paint;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.RoundRectangle2D;
 
 
 /**
@@ -22,6 +17,8 @@ import java.awt.geom.RoundRectangle2D;
  * @author Brennan
  */
 public class Main extends javax.swing.JFrame {
+    int x = 100;
+    int y = 100;
     DrawableObj dObj = new DrawableObj();
     SolarSystem ss = new SolarSystem();
     
