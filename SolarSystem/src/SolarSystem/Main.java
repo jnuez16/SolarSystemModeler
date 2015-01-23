@@ -5,12 +5,12 @@
  */
 package SolarSystem;
 
-import CelestialBodies.SolarSystem;
+import CelestialBodies.Planet;
 import CelestialBodies.Star;
-import java.awt.Color;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
@@ -19,17 +19,43 @@ import java.awt.Graphics2D;
  */
 public class Main extends javax.swing.JFrame {
     Star sun;
+    Planet earth;
+    int placeholder = 50;   // temporarily being used for mass & momentum
+    Timer timer = new Timer();
     
     /**
      * Creates new form Main
      */
     public Main() {
         initComponents();
+        
         int xScreen = pnlScreen.getWidth() - 1;
         int yScreen = pnlScreen.getHeight() - 1;
-        sun = new Star(500, xScreen, yScreen, 50, 50);
+        sun = new Star(placeholder, xScreen, yScreen, 50, 50);
+        earth = new Planet(placeholder, placeholder, 400, 400, 25, 25);
+        
+        // TimerTask is animating the Planet earth. For testing I just manually
+        // added to the planet's x and y positions. At this point we can start
+        // getting things to work as intended. Note: I'll be adjust/moving where a lot
+        // of these things (objects, timertask, etc.) are after the demo. But for now
+        // I just want something to show :P
+        TimerTask task = new TimerTask() {
+			@Override
+			public void run() {
+				earth.setXPos((earth.getXPos() + 3));
+                                earth.setYPos((earth.getYPos() + 3));
+				repaint();
+			}
+		};
+        	timer.schedule(task, 100, 100);
+
+
     }
 
+    public void simulate(){
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,6 +90,7 @@ public class Main extends javax.swing.JFrame {
                 super.paintComponent(g);
 
                 sun.draw((Graphics2D)g);
+                earth.draw((Graphics2D)g);
             }
         };
         jButton1 = new javax.swing.JButton();

@@ -6,7 +6,9 @@
 package CelestialBodies;
 
 import Calculations.Calculations;
+import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
 
 /**
  *
@@ -33,15 +35,16 @@ public class Planet {
         setMass(m);
         setAngMomen(l);
         calc = new Calculations(m, l);
-        
+
         this.xPos = x;
         this.yPos = y;
         this.width = width;
         this.height = height;
     }
-    
-    public void draw(Graphics2D g){
-        // NEEDS TO BE IMPLEMENTED
+
+    public void draw(Graphics2D g) {
+        g.setPaint(Color.BLUE);
+        g.fill(new Ellipse2D.Double(xPos, yPos, width, height));
     }
 
     public void setMass(double m) {
