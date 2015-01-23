@@ -16,18 +16,22 @@ public class Calculations {
     private static Double m;
     private static Double l;
     public static Double distance;
+    private static Double dist;
 
     public Calculations(Double planetMass, Double angMomentum) {
         m = planetMass;
         l = angMomentum;
         M = 333054.253182;
-        distance = distance()/5.972e24;
+        dist = distance()/5.972e24;
+        distance = dist * 1e-9;
     }
 
     public void setValues(Double starMass, Double planetMass, Double angMomentum) {
         M = starMass;
         l = angMomentum;
         m = planetMass;
+        dist = distance()/5.972e24;
+        distance = dist * 1e-9;
     }
 
     public Double distance() {
@@ -80,7 +84,7 @@ public class Calculations {
     }
 
     public Double time() {
-        return (((2 * Math.PI) * m * distance * distance) / l)/86400;
+        return (((2 * Math.PI) * m * dist * dist) / l)/86400;
     }
 
     public Double theta(Double t) {
