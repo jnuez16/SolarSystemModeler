@@ -80,10 +80,10 @@ public class Calculations {
     }
 
     public Double time() {
-        return ((2 * Math.PI) * m * distance * distance) / l;
+        return (((2 * Math.PI) * m * distance * distance) / l)/86400;
     }
 
     public Double theta(Double t) {
-        return (l * t * 86400) / (m * distance * distance);
+        return t*((2*Math.PI)/time());
     }
 }
