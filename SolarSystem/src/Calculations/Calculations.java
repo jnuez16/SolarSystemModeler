@@ -23,7 +23,7 @@ public class Calculations {
         l = angMomentum;
         M = 333054.253182;
         dist = distance()/5.972e24;
-        distance = dist * 1e-9;
+        distance = (dist * 1e-9)/2;
     }
 
     public void setValues(Double starMass, Double planetMass, Double angMomentum) {
@@ -31,7 +31,7 @@ public class Calculations {
         l = angMomentum;
         m = planetMass;
         dist = distance()/5.972e24;
-        distance = dist * 1e-9;
+        distance = (dist * 1e-9);
     }
 
     public Double distance() {
