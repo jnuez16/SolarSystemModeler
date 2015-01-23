@@ -22,6 +22,7 @@ public class Main extends javax.swing.JFrame {
     Planet earth;
     int placeholder = 50;   // temporarily being used for mass & momentum
     Timer timer = new Timer();
+    double t = 1;
     
     /**
      * Creates new form Main
@@ -32,7 +33,8 @@ public class Main extends javax.swing.JFrame {
         int xScreen = pnlScreen.getWidth() - 1;
         int yScreen = pnlScreen.getHeight() - 1;
         sun = new Star(placeholder, xScreen, yScreen, 50, 50);
-        earth = new Planet(placeholder, placeholder, 400, 400, 25, 25);
+        earth = new Planet(1.0, 4.522613, xScreen/2, yScreen/2, 25, 25);
+        
         
         // TimerTask is animating the Planet earth. For testing I just manually
         // added to the planet's x and y positions. At this point we can start
@@ -42,8 +44,8 @@ public class Main extends javax.swing.JFrame {
         TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
-				earth.setXPos((earth.getXPos() + 3));
-                                earth.setYPos((earth.getYPos() + 3));
+				earth.setXPos(earth.getXPos(t++, xScreen/2));
+                                earth.setYPos(earth.getYPos(t++, yScreen/2));
 				repaint();
 			}
 		};

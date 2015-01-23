@@ -34,9 +34,9 @@ public class Planet {
     public Planet(double m, double l, int x, int y, int width, int height) {
         setMass(m);
         setAngMomen(l);
-        calc = new Calculations(m, l);
+        calc = new Calculations(m, L);
 
-        this.xPos = x;
+        this.xPos = x + calc.distance;
         this.yPos = y;
         this.width = width;
         this.height = height;
@@ -75,16 +75,16 @@ public class Planet {
         return xPos;
     }
 
-    public double getXPos(double t) {
-        return calc.distance * Math.cos(calc.theta(t));
+    public double getXPos(double t, double x) {
+        return (calc.distance * Math.cos(calc.theta(t)))+x;
     }
 
     public double getYPos() {
         return yPos;
     }
 
-    public double getYPos(double t) {
-        return calc.distance * Math.sin(calc.theta(t));
+    public double getYPos(double t, double y) {
+        return (calc.distance * Math.sin(calc.theta(t)))+y;
     }
 
 //    public double distance(double starMass)

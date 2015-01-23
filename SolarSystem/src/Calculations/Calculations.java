@@ -37,8 +37,9 @@ public class Calculations {
     public Double distance() {
         Double del = 1e-6, r = 2.0, dr = 0.1;
         int n = 10000;
+        r = secant(n, del, r, dr);
 
-        return secant(n, del, r, dr);
+        return r;
     }
 
     public static Double secant(int n, Double del, Double x, Double dx) {
