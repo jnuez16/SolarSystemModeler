@@ -6,6 +6,7 @@
 package SolarSystem;
 
 import CelestialBodies.SolarSystem;
+import CelestialBodies.Star;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -17,17 +18,16 @@ import java.awt.Graphics2D;
  * @author Brennan
  */
 public class Main extends javax.swing.JFrame {
-    int x = 300;
-    int y = 300;
-    DrawableObj dObj = new DrawableObj();
-    SolarSystem ss = new SolarSystem();
+    Star sun;
     
     /**
      * Creates new form Main
      */
     public Main() {
         initComponents();
-        ss.addStar(333054.253182);  // initialize star mass
+        int xScreen = pnlScreen.getWidth() - 1;
+        int yScreen = pnlScreen.getHeight() - 1;
+        sun = new Star(500, xScreen, yScreen, 50, 50);
     }
 
     /**
@@ -58,13 +58,12 @@ public class Main extends javax.swing.JFrame {
         jSlider1 = new javax.swing.JSlider();
         jLabel5 = new javax.swing.JLabel();
         jSlider2 = new javax.swing.JSlider();
-        jPanel3 = new javax.swing.JPanel(){
+        pnlScreen = new javax.swing.JPanel(){
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
 
-                //dObj.draw((Graphics2D)g);
-                dObj.drawStar((Graphics2D)g, x, y);
+                sun.draw((Graphics2D)g);
             }
         };
         jButton1 = new javax.swing.JButton();
@@ -218,17 +217,17 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlScreen.setBackground(new java.awt.Color(0, 0, 0));
+        pnlScreen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pnlScreenLayout = new javax.swing.GroupLayout(pnlScreen);
+        pnlScreen.setLayout(pnlScreenLayout);
+        pnlScreenLayout.setHorizontalGroup(
+            pnlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 598, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnlScreenLayout.setVerticalGroup(
+            pnlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 598, Short.MAX_VALUE)
         );
 
@@ -249,7 +248,7 @@ public class Main extends javax.swing.JFrame {
                         .addGap(109, 109, 109)
                         .addComponent(jButton1)))
                 .addGap(44, 44, 44)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -263,7 +262,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -318,7 +317,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
@@ -327,5 +325,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSlider jSlider1;
     private javax.swing.JSlider jSlider2;
     private javax.swing.JLabel lbEarth;
+    private javax.swing.JPanel pnlScreen;
     // End of variables declaration//GEN-END:variables
 }

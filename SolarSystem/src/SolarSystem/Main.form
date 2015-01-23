@@ -38,7 +38,7 @@
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+              <Component id="pnlScreen" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="39" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -55,7 +55,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlScreen" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -317,7 +317,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel3">
+    <Container class="javax.swing.JPanel" name="pnlScreen">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
@@ -329,7 +329,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel(){&#xa;    @Override&#xa;    public void paintComponent(Graphics g) {&#xa;        super.paintComponent(g);&#xa;&#xa;        //dObj.draw((Graphics2D)g);&#xa;        dObj.drawStar((Graphics2D)g, x, y);&#xa;    }&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel(){&#xa;    @Override&#xa;    public void paintComponent(Graphics g) {&#xa;        super.paintComponent(g);&#xa;&#xa;        sun.draw((Graphics2D)g);&#xa;    }&#xa;}"/>
       </AuxValues>
 
       <Layout>

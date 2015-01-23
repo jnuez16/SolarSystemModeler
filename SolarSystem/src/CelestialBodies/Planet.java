@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package CelestialBodies;
+
 import Calculations.Calculations;
+import java.awt.Graphics2D;
 
 /**
  *
@@ -16,14 +18,30 @@ public class Planet {
     private double L;
     private double xPos;
     private double yPos;
+    private int width = 50;
+    private int height = 50;
     private Calculations calc = null;
-    
-    public Planet(double m, double l)
-    {
+
+    public Planet(double m, double l) {
+        setMass(m);
+        setAngMomen(l);
+        calc = new Calculations(m, l);
+
+    }
+
+    public Planet(double m, double l, int x, int y, int width, int height) {
         setMass(m);
         setAngMomen(l);
         calc = new Calculations(m, l);
         
+        this.xPos = x;
+        this.yPos = y;
+        this.width = width;
+        this.height = height;
+    }
+    
+    public void draw(Graphics2D g){
+        // NEEDS TO BE IMPLEMENTED
     }
 
     public void setMass(double m) {
@@ -31,11 +49,10 @@ public class Planet {
     }
 
     public void setAngMomen(double l) {
-        L = (l*(1e15));
+        L = (l * (1e15));
     }
-    
-    public void setXPos(double x)
-    {
+
+    public void setXPos(double x) {
         xPos = x;
     }
 
@@ -51,36 +68,29 @@ public class Planet {
         return L;
     }
 
-    public double getXPos()
-    {
+    public double getXPos() {
         return xPos;
     }
-    
-    public double getXPos(double t)
-    {
-        return calc.distance*Math.cos(calc.theta(t));
+
+    public double getXPos(double t) {
+        return calc.distance * Math.cos(calc.theta(t));
     }
-    
-    
-    public double getYPos()
-    {
+
+    public double getYPos() {
         return yPos;
     }
-    
-    public double getYPos(double t)
-    {
-        return calc.distance*Math.sin(calc.theta(t));
+
+    public double getYPos(double t) {
+        return calc.distance * Math.sin(calc.theta(t));
     }
-    
+
 //    public double distance(double starMass)
 //    {
 //        calc.setValues(starMass, getMass(), getAngMomen());
 //        return calc.distance(); 
 //    }
-    
-    public Calculations useCalculate()
-    {
+    public Calculations useCalculate() {
         return calc;
     }
-    
+
 }
