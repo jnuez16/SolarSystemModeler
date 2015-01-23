@@ -11,38 +11,49 @@ package Calculations;
  */
 public class Calculations {
 
-    static final double G = 6.67384e-11;
-    static double M;
-    static double m;
-    static double l;
+    static final Double G = 6.67384e-11;
+    private static Double M;
+    private static Double m;
+    private static Double l;
+    public static Double distance;
 
-    public void setValues(double starMass, double planetMass, double angMomentum) {
+    public Calculations(Double planetMass, Double angMomentum) {
+        m = planetMass;
+        l = angMomentum;
+        M = 333054.253182;
+        distance = distance()/5.972e24;
+    }
+
+    public void setValues(Double starMass, Double planetMass, Double angMomentum) {
         M = starMass;
         l = angMomentum;
         m = planetMass;
     }
 
-    public double distance() {
-        double del = 1e-6, r = 2, dr = 0.1;
+    public Double distance() {
+        Double del = 1e-6, r = 2.0, dr = 0.1;
         int n = 10000;
 
         return secant(n, del, r, dr);
     }
 
-    public static double secant(int n, double del, double x, double dx) {
+    public static Double secant(int n, Double del, Double x, Double dx) {
         int k = 0;
-        double x1 = x + dx, x2 = 0;
-        double g0 = g(x);
-        double g1 = g(x1);
+        Double x1 = x + dx, x2 = 0.0;
+        Double g0 = g(x);
+        Double g1 = g(x1);
         if (g1 > g0) {
             x1 = x - dx;
         }
         while ((Math.abs(dx) > del) && (k < n)) {
 
-            double d = f(x1) - f(x);
+            Double d = f(x1) - f(x);
             dx = -(x1 - x) * f(x1) / d;
             x2 = x1 + dx;
-            double g2 = g(x2);
+            if (Double.isNaN(x2) || Double.isInfinite(x2)) {
+                break;
+            }
+            Double g2 = g(x2);
             if (g2 > g1) {
                 x2 = x1 - dx;
             }
@@ -58,13 +69,21 @@ public class Calculations {
         return x1;
     }
 
-    public static double g(double x) {
-        double u = ((-(G * m * M) / x) + (((l * l) / (2 * x * x)) * ((m + M) / (m * M))));
+    public static Double g(Double x) {
+        Double u = ((-(G * m * M) / x) + (((l * l) / (2 * x * x)) * ((m + M) / (m * M))));
         return u;
     }
 
-    public static double f(double x) {
-        double u = ((-(G * m * M) / (x * x)) + (((l * l) / (x * x * x)) * ((m + M) / (m * M))));
+    public static Double f(Double x) {
+        Double u = ((-(G * m * M) / (x * x)) + (((l * l) / (x * x * x)) * ((m + M) / (m * M))));
         return u;
+    }
+
+    public Double time() {
+        return ((2 * Math.PI) * m * distance * distance) / l;
+    }
+
+    public Double theta(Double t) {
+        return (l * t * 86400) / (m * distance * distance);
     }
 }

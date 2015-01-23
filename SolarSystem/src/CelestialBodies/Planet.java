@@ -16,12 +16,14 @@ public class Planet {
     private double L;
     private double xPos;
     private double yPos;
-    private Calculations calc = new Calculations();
+    private Calculations calc = null;
     
     public Planet(double m, double l)
     {
         setMass(m);
         setAngMomen(l);
+        calc = new Calculations(m, l);
+        
     }
 
     public void setMass(double m) {
@@ -54,15 +56,31 @@ public class Planet {
         return xPos;
     }
     
+    public double getXPos(double t)
+    {
+        return calc.distance*Math.cos(calc.theta(t));
+    }
+    
+    
     public double getYPos()
     {
         return yPos;
     }
     
-    public double distance(double starMass)
+    public double getYPos(double t)
     {
-        calc.setValues(starMass, getMass(), getAngMomen());
-        return calc.distance(); 
+        return calc.distance*Math.sin(calc.theta(t));
+    }
+    
+//    public double distance(double starMass)
+//    {
+//        calc.setValues(starMass, getMass(), getAngMomen());
+//        return calc.distance(); 
+//    }
+    
+    public Calculations useCalculate()
+    {
+        return calc;
     }
     
 }
