@@ -102,7 +102,7 @@ public class Main extends javax.swing.JFrame {
                 earth.draw((Graphics2D)g);
             }
         };
-        jButton1 = new javax.swing.JButton();
+        addPlanet = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -312,7 +312,12 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 798, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Add Planet");
+        addPlanet.setText("Add Planet");
+        addPlanet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPlanetActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -329,7 +334,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(pnlScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
-                        .addComponent(jButton1)))
+                        .addComponent(addPlanet)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -343,7 +348,7 @@ public class Main extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(addPlanet)
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
@@ -383,6 +388,11 @@ public class Main extends javax.swing.JFrame {
         // When Venus Radio Button is selected!!
     }//GEN-LAST:event_rdoVenusActionPerformed
 
+    private void addPlanetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPlanetActionPerformed
+        // TODO add your handling code here:
+        Planet p = new Planet(mass, angMom);
+    }//GEN-LAST:event_addPlanetActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -419,8 +429,8 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addPlanet;
     private javax.swing.ButtonGroup btnGroup;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
