@@ -14,53 +14,53 @@ import java.util.TimerTask;
 import javax.swing.ButtonGroup;
 import javax.swing.JSlider;
 
-
 /**
  *
  * @author Brennan
  */
 public class Main extends javax.swing.JFrame {
+
+    Double mass;
+    Double angMom;
     Star sun;
     Planet earth;
     int placeholder = 50;   // temporarily being used for mass & momentum
     Timer timer = new Timer();
     double t = 1;
-    
+
     /**
      * Creates new form Main
      */
     public Main() {
         initComponents();
-        
+        lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
+        lbLValue.setText(String.format("%d", sldrLMom.getValue() / 10));
         int xScreen = pnlScreen.getWidth() - 1;
         int yScreen = pnlScreen.getHeight() - 1;
         sun = new Star(placeholder, xScreen, yScreen, 50, 50);
-        earth = new Planet(1.0, 4.522613, xScreen/2, yScreen/2, 25, 25);
-        
-        
-        
+        earth = new Planet(1.0, 4.522613, xScreen / 2, yScreen / 2, 25, 25);
+
         // TimerTask is animating the Planet earth. For testing I just manually
         // added to the planet's x and y positions. At this point we can start
         // getting things to work as intended. Note: I'll be adjust/moving where a lot
         // of these things (objects, timertask, etc.) are after the demo. But for now
         // I just want something to show :P
         TimerTask task = new TimerTask() {
-			@Override
-			public void run() {
-				earth.setXPos(earth.getXPos(t++, xScreen/2));
-                                earth.setYPos(earth.getYPos(t++, yScreen/2));
-				repaint();
-			}
-		};
-        	timer.schedule(task, 100, 100);
-
+            @Override
+            public void run() {
+                earth.setXPos(earth.getXPos(t++, xScreen / 2));
+                earth.setYPos(earth.getYPos(t++, yScreen / 2));
+                repaint();
+            }
+        };
+        timer.schedule(task, 100, 100);
 
     }
 
-    public void simulate(){
-        
+    public void simulate() {
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -228,8 +228,10 @@ public class Main extends javax.swing.JFrame {
         lbLValue.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         lbLValue.setText("50");
 
+        sldrMass.setMajorTickSpacing(10);
         sldrMass.setMaximum(150);
         sldrMass.setMinimum(50);
+        sldrMass.setMinorTickSpacing(5);
         sldrMass.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sldrMassStateChanged(evt);
@@ -239,6 +241,9 @@ public class Main extends javax.swing.JFrame {
         lbMValue.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         lbMValue.setText("50");
 
+        sldrLMom.setMajorTickSpacing(1);
+        sldrLMom.setMaximum(50);
+        sldrLMom.setMinimum(10);
         sldrLMom.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sldrLMomStateChanged(evt);
@@ -254,13 +259,10 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbMass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(sldrMass, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(sldrLMom, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sldrLMom, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sldrMass, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -322,12 +324,12 @@ public class Main extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1)))
+                            .addComponent(jScrollPane1))
+                        .addGap(44, 44, 44)
+                        .addComponent(pnlScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
+                        .addGap(107, 107, 107)
                         .addComponent(jButton1)))
-                .addGap(44, 44, 44)
-                .addComponent(pnlScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -338,11 +340,11 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(pnlScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
@@ -350,19 +352,30 @@ public class Main extends javax.swing.JFrame {
 
     private void sldrMassStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldrMassStateChanged
         // TODO add your handling code here:
-        JSlider mSlider = (JSlider)evt.getSource();
-            if (!mSlider.getValueIsAdjusting()){
-                int fps = (int)mSlider.getValue();
-                lbMValue.setText("" + fps);
-            }
+//        JSlider mSlider = (JSlider)evt.getSource();
+//            if (mSlider.getValueIsAdjusting()){
+//                int fps = (int)mSlider.getValue();
+//                lbMValue.setText("" + fps);
+//            }
+        if (sldrMass.getValueIsAdjusting()) {
+            lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
+        } else if (!sldrMass.getValueIsAdjusting()) {
+            mass = (double) sldrMass.getValue() / 100;
+        }
     }//GEN-LAST:event_sldrMassStateChanged
 
     private void sldrLMomStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldrLMomStateChanged
-        JSlider LSlider = (JSlider)evt.getSource();
-            if (!LSlider.getValueIsAdjusting()){
-                int fps = (int)LSlider.getValue();
-                lbLValue.setText("" + fps);
-            }
+//        JSlider LSlider = (JSlider) evt.getSource();
+//        if (!LSlider.getValueIsAdjusting()) {
+//            int fps = (int) LSlider.getValue();
+//            lbLValue.setText("" + fps);
+//        }
+        if (sldrLMom.getValueIsAdjusting()) {
+            lbLValue.setText(String.format("%d", sldrLMom.getValue()/10));
+        }
+        else if(!sldrLMom.getValueIsAdjusting()){
+            angMom = (double) sldrLMom.getValue()/10;
+        }
     }//GEN-LAST:event_sldrLMomStateChanged
 
     private void rdoVenusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoVenusActionPerformed
