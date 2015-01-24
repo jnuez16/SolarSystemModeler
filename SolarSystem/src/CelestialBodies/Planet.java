@@ -44,26 +44,25 @@ public class Planet {
         this.height = height;
     }
     
-    public Planet(double m, double l, int x, int y, BufferedImage im)
+    public Planet(double m, double l, int x, int y, BufferedImage img)
     {
         setMass(m);
         setAngMomen(l);
         calc = new Calculations(m, L);
         this.xPos = x + calc.distance;
         this.yPos = y;
-        this.img = im;
+        this.img = img;
     }
 
-    public void draw(Graphics2D g) {
-        g.setPaint(Color.BLUE);
-        g.fill(new Ellipse2D.Double(xPos, yPos, width, height));
-    }
 //    public void draw(Graphics2D g) {
-//        if (img != null) {
-//            g.drawImage(img, null, (int)xPos, (int)yPos);
-//        }
-//
+//        g.setPaint(Color.BLUE);
+//        g.fill(new Ellipse2D.Double(xPos, yPos, width, height));
 //    }
+    public void draw(Graphics2D g) {
+        if (img != null) {
+            g.drawImage(img, null, (int)xPos, (int)yPos);
+        } 
+    }
 
     public void setMass(double m) {
         mass = m;

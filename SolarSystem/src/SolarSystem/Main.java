@@ -11,8 +11,10 @@ import CelestialBodies.Star;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.JSlider;
 
@@ -23,7 +25,7 @@ import javax.swing.JSlider;
 public class Main extends javax.swing.JFrame {
 
     int placeholder = 50;   // temporarily being used for mass & momentum
-    double t = 1;
+    double t = 0;
     Double mass;
     Double angMom;
     Star sun;
@@ -54,8 +56,7 @@ public class Main extends javax.swing.JFrame {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                earth.setXPos(earth.getXPos(t++, xScreen / 2));
-                earth.setYPos(earth.getYPos(t++, yScreen / 2));
+                ss.simulate(t++, xScreen / 2, yScreen / 2);
                 repaint();
             }
         };
@@ -105,7 +106,13 @@ public class Main extends javax.swing.JFrame {
                 super.paintComponent(g);
 
                 sun.draw((Graphics2D)g);
-                earth.draw((Graphics2D)g);
+                //earth.draw((Graphics2D)g);
+
+                if (!ss.getPlanets().isEmpty()){
+                    for (int i = 0; i < ss.getPlanets().size(); i++){
+                        ss.getPlanets().get(i).draw((Graphics2D) g);
+                    }
+                }
             }
         };
         addPlanet = new javax.swing.JButton();
@@ -395,14 +402,25 @@ public class Main extends javax.swing.JFrame {
 
     private void addPlanetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPlanetActionPerformed
         // TODO add your handling code here:
-        if (btnGroup.getSelection().equals(rdoVenus)) {
-            ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
-        } else if (btnGroup.getSelection().equals(rdoEarth)) {
-            ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
-        } else if (btnGroup.getSelection().equals(rdoMars)) {
-            ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
-        } else if (btnGroup.getSelection().equals(rdoJupiter)) {
-            ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
+        try {
+            if (btnGroup.getSelection().equals(rdoVenus)) {
+                URL url = this.getClass().getClassLoader().getResource("Resources/sVenus.png");
+                img = ImageIO.read(url);
+                ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
+            } else if (btnGroup.getSelection().equals(rdoEarth)) {
+                URL url = this.getClass().getClassLoader().getResource("Resources/sEarth.png");
+                img = ImageIO.read(url);
+                ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
+            } else if (btnGroup.getSelection().equals(rdoMars)) {
+                URL url = this.getClass().getClassLoader().getResource("Resources/sMars.png");
+                img = ImageIO.read(url);
+                ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
+            } else if (btnGroup.getSelection().equals(rdoJupiter)) {
+                ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
+            }
+            // repaint();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_addPlanetActionPerformed
 

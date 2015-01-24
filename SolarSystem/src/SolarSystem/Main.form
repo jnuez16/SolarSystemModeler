@@ -396,7 +396,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel(){&#xa;    @Override&#xa;    public void paintComponent(Graphics g) {&#xa;        super.paintComponent(g);&#xa;&#xa;        sun.draw((Graphics2D)g);&#xa;        earth.draw((Graphics2D)g);&#xa;    }&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel(){&#xa;    @Override&#xa;    public void paintComponent(Graphics g) {&#xa;        super.paintComponent(g);&#xa;&#xa;        sun.draw((Graphics2D)g);&#xa;        //earth.draw((Graphics2D)g);&#xa;&#xa;        if (!ss.getPlanets().isEmpty()){&#xa;            for (int i = 0; i &lt; ss.getPlanets().size(); i++){&#xa;                ss.getPlanets().get(i).draw((Graphics2D) g);&#xa;}&#xa;}&#xa;    }&#xa;}"/>
       </AuxValues>
 
       <Layout>
