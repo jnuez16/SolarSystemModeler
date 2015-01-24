@@ -6,6 +6,7 @@
 package SolarSystem;
 
 import CelestialBodies.Planet;
+import CelestialBodies.SolarSystem;
 import CelestialBodies.Star;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -20,13 +21,14 @@ import javax.swing.JSlider;
  */
 public class Main extends javax.swing.JFrame {
 
+    int placeholder = 50;   // temporarily being used for mass & momentum
+    double t = 1;
     Double mass;
     Double angMom;
     Star sun;
     Planet earth;
-    int placeholder = 50;   // temporarily being used for mass & momentum
+    SolarSystem ss = new SolarSystem();
     Timer timer = new Timer();
-    double t = 1;
 
     /**
      * Creates new form Main
@@ -376,10 +378,9 @@ public class Main extends javax.swing.JFrame {
 //            lbLValue.setText("" + fps);
 //        }
         if (sldrLMom.getValueIsAdjusting()) {
-            lbLValue.setText(String.format("%.1f", (double)sldrLMom.getValue()/100));
-        }
-        else if(!sldrLMom.getValueIsAdjusting()){
-            angMom = (double) sldrLMom.getValue()/100;
+            lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
+        } else if (!sldrLMom.getValueIsAdjusting()) {
+            angMom = (double) sldrLMom.getValue() / 100;
         }
     }//GEN-LAST:event_sldrLMomStateChanged
 
