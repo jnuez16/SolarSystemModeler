@@ -35,6 +35,7 @@ public class Main extends javax.swing.JFrame {
     BufferedImage img = null;
     int xScreen;
     int yScreen;
+    int choice;
 
     /**
      * Creates new form Main
@@ -133,10 +134,25 @@ public class Main extends javax.swing.JFrame {
         });
 
         btnGroup.add(rdoEarth);
+        rdoEarth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoEarthActionPerformed(evt);
+            }
+        });
 
         btnGroup.add(rdoMars);
+        rdoMars.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoMarsActionPerformed(evt);
+            }
+        });
 
         btnGroup.add(rdoJupiter);
+        rdoJupiter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoJupiterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -398,24 +414,25 @@ public class Main extends javax.swing.JFrame {
     private void rdoVenusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoVenusActionPerformed
         // TODO add your handling code here:
         // When Venus Radio Button is selected!!
+        choice = 1;
     }//GEN-LAST:event_rdoVenusActionPerformed
 
     private void addPlanetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPlanetActionPerformed
         // TODO add your handling code here:
         try {
-            if (btnGroup.getSelection().equals(rdoVenus)) {
+            if (choice == 1) {
                 URL url = this.getClass().getClassLoader().getResource("Resources/sVenus.png");
                 img = ImageIO.read(url);
                 ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
-            } else if (btnGroup.getSelection().equals(rdoEarth)) {
+            } else if (choice == 2) {
                 URL url = this.getClass().getClassLoader().getResource("Resources/sEarth.png");
                 img = ImageIO.read(url);
                 ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
-            } else if (btnGroup.getSelection().equals(rdoMars)) {
+            } else if (choice == 3) {
                 URL url = this.getClass().getClassLoader().getResource("Resources/sMars.png");
                 img = ImageIO.read(url);
                 ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
-            } else if (btnGroup.getSelection().equals(rdoJupiter)) {
+            } else if (choice == 4) {
                 ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
             }
             // repaint();
@@ -423,6 +440,21 @@ public class Main extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_addPlanetActionPerformed
+
+    private void rdoEarthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoEarthActionPerformed
+        // TODO add your handling code here:
+        choice = 2;
+    }//GEN-LAST:event_rdoEarthActionPerformed
+
+    private void rdoMarsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoMarsActionPerformed
+        // TODO add your handling code here:
+        choice = 3;
+    }//GEN-LAST:event_rdoMarsActionPerformed
+
+    private void rdoJupiterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoJupiterActionPerformed
+        // TODO add your handling code here:
+        choice = 4;
+    }//GEN-LAST:event_rdoJupiterActionPerformed
 
     /**
      * @param args the command line arguments

@@ -190,6 +190,9 @@
                       <ComponentRef name="btnGroup"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdoEarthActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="rdoMars">
                   <Properties>
@@ -197,6 +200,9 @@
                       <ComponentRef name="btnGroup"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdoMarsActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="rdoJupiter">
                   <Properties>
@@ -204,6 +210,9 @@
                       <ComponentRef name="btnGroup"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdoJupiterActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
