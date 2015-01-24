@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.ButtonGroup;
 import javax.swing.JSlider;
 
 
@@ -35,6 +36,7 @@ public class Main extends javax.swing.JFrame {
         int yScreen = pnlScreen.getHeight() - 1;
         sun = new Star(placeholder, xScreen, yScreen, 50, 50);
         earth = new Planet(1.0, 4.522613, xScreen/2, yScreen/2, 25, 25);
+        
         
         
         // TimerTask is animating the Planet earth. For testing I just manually
@@ -68,18 +70,22 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGroup = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lbEarthImg = new javax.swing.JLabel();
         lbEarth = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        rdoVenus = new javax.swing.JRadioButton();
+        rdoEarth = new javax.swing.JRadioButton();
+        rdoMars = new javax.swing.JRadioButton();
+        rdoJupiter = new javax.swing.JRadioButton();
+        lbJupiterImg = new javax.swing.JLabel();
+        lbJupiter = new javax.swing.JLabel();
+        lbVenusImg = new javax.swing.JLabel();
+        lbVenus = new javax.swing.JLabel();
+        lbMars = new javax.swing.JLabel();
+        lbMarsImg = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lbMass = new javax.swing.JLabel();
         lbL = new javax.swing.JLabel();
@@ -100,11 +106,24 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/earth.gif"))); // NOI18N
+        lbEarthImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/earth.gif"))); // NOI18N
 
         lbEarth.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         lbEarth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbEarth.setText("Earth");
+
+        btnGroup.add(rdoVenus);
+        rdoVenus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoVenusActionPerformed(evt);
+            }
+        });
+
+        btnGroup.add(rdoEarth);
+
+        btnGroup.add(rdoMars);
+
+        btnGroup.add(rdoJupiter);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -113,34 +132,44 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
+                    .addComponent(rdoVenus)
+                    .addComponent(rdoEarth)
+                    .addComponent(rdoMars)
+                    .addComponent(rdoJupiter))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(77, 77, 77)
-                .addComponent(jRadioButton1)
+                .addComponent(rdoVenus)
                 .addGap(145, 145, 145)
-                .addComponent(jRadioButton2)
+                .addComponent(rdoEarth)
+                .addGap(135, 135, 135)
+                .addComponent(rdoMars)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton3)
-                .addGap(50, 50, 50))
+                .addComponent(rdoJupiter)
+                .addGap(56, 56, 56))
         );
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/jupiter.gif"))); // NOI18N
+        lbJupiterImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/jupiter.gif"))); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Jupiter");
+        lbJupiter.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lbJupiter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbJupiter.setText("Jupiter");
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/venus.gif"))); // NOI18N
+        lbVenusImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/venus.gif"))); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Venus");
+        lbVenus.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lbVenus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbVenus.setText("Venus");
+
+        lbMars.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lbMars.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMars.setText("Mars");
+
+        lbMarsImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMarsImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/mars.gif"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,33 +180,39 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbJupiterImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbJupiter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbMars, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbEarth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addComponent(lbEarthImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbVenusImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbVenus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbMarsImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbVenus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
+                        .addComponent(lbVenusImg)
                         .addGap(18, 18, 18)
                         .addComponent(lbEarth)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
+                        .addComponent(lbEarthImg)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel7)
+                        .addComponent(lbMars)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)))
-                .addContainerGap())
+                        .addComponent(lbMarsImg)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbJupiter)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbJupiterImg)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -303,11 +338,11 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(pnlScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(66, 66, 66)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -329,6 +364,11 @@ public class Main extends javax.swing.JFrame {
                 lbLValue.setText("" + fps);
             }
     }//GEN-LAST:event_sldrLMomStateChanged
+
+    private void rdoVenusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoVenusActionPerformed
+        // TODO add your handling code here:
+        // When Venus Radio Button is selected!!
+    }//GEN-LAST:event_rdoVenusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -366,25 +406,29 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btnGroup;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbEarth;
+    private javax.swing.JLabel lbEarthImg;
+    private javax.swing.JLabel lbJupiter;
+    private javax.swing.JLabel lbJupiterImg;
     private javax.swing.JLabel lbL;
     private javax.swing.JLabel lbLValue;
     private javax.swing.JLabel lbMValue;
+    private javax.swing.JLabel lbMars;
+    private javax.swing.JLabel lbMarsImg;
     private javax.swing.JLabel lbMass;
+    private javax.swing.JLabel lbVenus;
+    private javax.swing.JLabel lbVenusImg;
     private javax.swing.JPanel pnlScreen;
+    private javax.swing.JRadioButton rdoEarth;
+    private javax.swing.JRadioButton rdoJupiter;
+    private javax.swing.JRadioButton rdoMars;
+    private javax.swing.JRadioButton rdoVenus;
     private javax.swing.JSlider sldrLMom;
     private javax.swing.JSlider sldrMass;
     // End of variables declaration//GEN-END:variables
