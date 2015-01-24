@@ -34,7 +34,7 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
-        lbLValue.setText(String.format("%d", sldrLMom.getValue() / 10));
+        lbLValue.setText(String.format("%d", sldrLMom.getValue() / 100));
         int xScreen = pnlScreen.getWidth() - 1;
         int yScreen = pnlScreen.getHeight() - 1;
         sun = new Star(placeholder, xScreen, yScreen, 50, 50);
@@ -241,9 +241,9 @@ public class Main extends javax.swing.JFrame {
         lbMValue.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         lbMValue.setText("50");
 
-        sldrLMom.setMajorTickSpacing(1);
-        sldrLMom.setMaximum(50);
-        sldrLMom.setMinimum(10);
+        sldrLMom.setMajorTickSpacing(10);
+        sldrLMom.setMaximum(500);
+        sldrLMom.setMinimum(100);
         sldrLMom.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sldrLMomStateChanged(evt);
@@ -371,10 +371,10 @@ public class Main extends javax.swing.JFrame {
 //            lbLValue.setText("" + fps);
 //        }
         if (sldrLMom.getValueIsAdjusting()) {
-            lbLValue.setText(String.format("%d", sldrLMom.getValue()/10));
+            lbLValue.setText(String.format("%.1f", (double)sldrLMom.getValue()/100));
         }
         else if(!sldrLMom.getValueIsAdjusting()){
-            angMom = (double) sldrLMom.getValue()/10;
+            angMom = (double) sldrLMom.getValue()/100;
         }
     }//GEN-LAST:event_sldrLMomStateChanged
 
