@@ -9,6 +9,7 @@ import Calculations.Calculations;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -23,6 +24,7 @@ public class Planet {
     private int width = 50;
     private int height = 50;
     private Calculations calc = null;
+    BufferedImage img = null;
 
     public Planet(double m, double l) {
         setMass(m);
@@ -46,6 +48,12 @@ public class Planet {
         g.setPaint(Color.BLUE);
         g.fill(new Ellipse2D.Double(xPos, yPos, width, height));
     }
+//    public void draw(Graphics2D g) {
+//        if (img != null) {
+//            g.drawImage(img, null, (int)xPos, (int)yPos);
+//        }
+//
+//    }
 
     public void setMass(double m) {
         mass = m;
@@ -76,7 +84,7 @@ public class Planet {
     }
 
     public double getXPos(double t, double x) {
-        return (calc.distance * Math.cos(calc.theta(t)))+x;
+        return (calc.distance * Math.cos(calc.theta(t))) + x;
     }
 
     public double getYPos() {
@@ -84,7 +92,7 @@ public class Planet {
     }
 
     public double getYPos(double t, double y) {
-        return (calc.distance * Math.sin(calc.theta(t)))+y;
+        return (calc.distance * Math.sin(calc.theta(t))) + y;
     }
 
 //    public double distance(double starMass)

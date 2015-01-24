@@ -10,6 +10,7 @@ import CelestialBodies.SolarSystem;
 import CelestialBodies.Star;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.ButtonGroup;
@@ -29,6 +30,7 @@ public class Main extends javax.swing.JFrame {
     Planet earth;
     SolarSystem ss = new SolarSystem();
     Timer timer = new Timer();
+    BufferedImage img = null;
     int xScreen;
     int yScreen;
 
