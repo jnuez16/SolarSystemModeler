@@ -19,11 +19,6 @@ public class SolarSystem {
         planet.add(new Planet(mass, l));
     }
     
-    // BCM: Added, needs testing
-    public void addPlanet(double mass, double l, int x, int y, int width, int height){
-        planet.add(new Planet(mass, l, x, y, width, height));
-    }
-    
     public void addStar(double mass)
     {
         star.add(new Star(mass));

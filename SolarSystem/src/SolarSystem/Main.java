@@ -6,7 +6,6 @@
 package SolarSystem;
 
 import CelestialBodies.Planet;
-import CelestialBodies.SolarSystem;
 import CelestialBodies.Star;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -21,17 +20,13 @@ import javax.swing.JSlider;
  */
 public class Main extends javax.swing.JFrame {
 
-    int placeholder = 50;   // temporarily being used for mass & momentum
-
-    int xScreen;
-    int yScreen;
-    double t = 1;
     Double mass;
     Double angMom;
-    SolarSystem ss = new SolarSystem();
     Star sun;
     Planet earth;
+    int placeholder = 50;   // temporarily being used for mass & momentum
     Timer timer = new Timer();
+    double t = 1;
 
     /**
      * Creates new form Main
@@ -40,9 +35,8 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
         lbLValue.setText(String.format("%d", sldrLMom.getValue() / 100));
-
-        xScreen = pnlScreen.getWidth() - 1;
-        yScreen = pnlScreen.getHeight() - 1;
+        int xScreen = pnlScreen.getWidth() - 1;
+        int yScreen = pnlScreen.getHeight() - 1;
         sun = new Star(placeholder, xScreen, yScreen, 50, 50);
         earth = new Planet(1.0, 4.522613, xScreen / 2, yScreen / 2, 25, 25);
 
@@ -377,9 +371,10 @@ public class Main extends javax.swing.JFrame {
 //            lbLValue.setText("" + fps);
 //        }
         if (sldrLMom.getValueIsAdjusting()) {
-            lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
-        } else if (!sldrLMom.getValueIsAdjusting()) {
-            angMom = (double) sldrLMom.getValue() / 100;
+            lbLValue.setText(String.format("%.1f", (double)sldrLMom.getValue()/100));
+        }
+        else if(!sldrLMom.getValueIsAdjusting()){
+            angMom = (double) sldrLMom.getValue()/100;
         }
     }//GEN-LAST:event_sldrLMomStateChanged
 
