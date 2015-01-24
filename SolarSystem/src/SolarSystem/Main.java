@@ -6,6 +6,7 @@
 package SolarSystem;
 
 import CelestialBodies.Planet;
+import CelestialBodies.SolarSystem;
 import CelestialBodies.Star;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -27,6 +28,7 @@ public class Main extends javax.swing.JFrame {
     int placeholder = 50;   // temporarily being used for mass & momentum
     Timer timer = new Timer();
     double t = 1;
+    SolarSystem ss = new SolarSystem();
 
     /**
      * Creates new form Main
@@ -37,6 +39,7 @@ public class Main extends javax.swing.JFrame {
         lbLValue.setText(String.format("%d", sldrLMom.getValue() / 100));
         int xScreen = pnlScreen.getWidth() - 1;
         int yScreen = pnlScreen.getHeight() - 1;
+        ss.addStar(new Star(placeholder,xScreen, yScreen, 50, 50));
         sun = new Star(placeholder, xScreen, yScreen, 50, 50);
         earth = new Planet(1.0, 4.522613, xScreen / 2, yScreen / 2, 25, 25);
 

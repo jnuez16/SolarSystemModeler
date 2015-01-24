@@ -24,6 +24,10 @@ public class SolarSystem {
         star.add(new Star(mass));
     }
     
+    public void addStar(Star s)
+    {
+        star.add(s);
+    }
     public List<Planet> getPlanets()
     {
         return planet;
@@ -34,5 +38,9 @@ public class SolarSystem {
         return star;
     }
     
+    public void simulate(int xScreen, int ySreen)
+    {
+
+    }
     
 }
