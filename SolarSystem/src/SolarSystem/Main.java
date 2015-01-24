@@ -29,6 +29,8 @@ public class Main extends javax.swing.JFrame {
     Planet earth;
     SolarSystem ss = new SolarSystem();
     Timer timer = new Timer();
+    int xScreen;
+    int yScreen;
 
     /**
      * Creates new form Main
@@ -37,8 +39,8 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
         lbLValue.setText(String.format("%d", sldrLMom.getValue() / 100));
-        int xScreen = pnlScreen.getWidth() - 1;
-        int yScreen = pnlScreen.getHeight() - 1;
+        xScreen = pnlScreen.getWidth() - 1;
+        yScreen = pnlScreen.getHeight() - 1;
         sun = new Star(placeholder, xScreen, yScreen, 50, 50);
         earth = new Planet(1.0, 4.522613, xScreen / 2, yScreen / 2, 25, 25);
 
@@ -145,7 +147,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(77, 77, 77)
                 .addComponent(rdoVenus)
-                .addGap(145, 145, 145)
+                .addGap(139, 139, 139)
                 .addComponent(rdoEarth)
                 .addGap(135, 135, 135)
                 .addComponent(rdoMars)
@@ -391,7 +393,18 @@ public class Main extends javax.swing.JFrame {
 
     private void addPlanetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPlanetActionPerformed
         // TODO add your handling code here:
-        Planet p = new Planet(mass, angMom);
+        if (btnGroup.getSelection().equals(rdoVenus)) {
+            ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, 25, 25));
+        }
+        else if(btnGroup.getSelection().equals(rdoEarth)){
+            ss.addPlanet(new Planet(mass, angMom, xScreen/2, yScreen/2, 25, 25));
+        }
+        else if(btnGroup.getSelection().equals(rdoMars)){
+            ss.addPlanet(new Planet(mass, angMom, xScreen/2, yScreen/2, 25, 25));
+        }
+        else if(btnGroup.getSelection().equals(rdoJupiter)){
+            ss.addPlanet(new Planet(mass, angMom, xScreen/2, yScreen/2,25, 25));
+        }
     }//GEN-LAST:event_addPlanetActionPerformed
 
     /**

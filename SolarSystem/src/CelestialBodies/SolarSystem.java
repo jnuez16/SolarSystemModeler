@@ -19,9 +19,18 @@ public class SolarSystem {
         planet.add(new Planet(mass, l));
     }
     
+    public void addPlanet(Planet p)
+    {
+        planet.add(p);
+    }
     public void addStar(double mass)
     {
         star.add(new Star(mass));
+    }
+    
+    public void addStar(Star s)
+    {
+        star.add(s);
     }
     
     public List<Planet> getPlanets()
