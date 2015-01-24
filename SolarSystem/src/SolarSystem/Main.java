@@ -396,16 +396,13 @@ public class Main extends javax.swing.JFrame {
     private void addPlanetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPlanetActionPerformed
         // TODO add your handling code here:
         if (btnGroup.getSelection().equals(rdoVenus)) {
-            ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, 25, 25));
-        }
-        else if(btnGroup.getSelection().equals(rdoEarth)){
-            ss.addPlanet(new Planet(mass, angMom, xScreen/2, yScreen/2, 25, 25));
-        }
-        else if(btnGroup.getSelection().equals(rdoMars)){
-            ss.addPlanet(new Planet(mass, angMom, xScreen/2, yScreen/2, 25, 25));
-        }
-        else if(btnGroup.getSelection().equals(rdoJupiter)){
-            ss.addPlanet(new Planet(mass, angMom, xScreen/2, yScreen/2,25, 25));
+            ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
+        } else if (btnGroup.getSelection().equals(rdoEarth)) {
+            ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
+        } else if (btnGroup.getSelection().equals(rdoMars)) {
+            ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
+        } else if (btnGroup.getSelection().equals(rdoJupiter)) {
+            ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
         }
     }//GEN-LAST:event_addPlanetActionPerformed
 

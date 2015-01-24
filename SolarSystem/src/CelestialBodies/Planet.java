@@ -29,7 +29,7 @@ public class Planet {
     public Planet(double m, double l) {
         setMass(m);
         setAngMomen(l);
-        calc = new Calculations(m, l);
+        calc = new Calculations(m, L);
 
     }
 
@@ -42,6 +42,16 @@ public class Planet {
         this.yPos = y;
         this.width = width;
         this.height = height;
+    }
+    
+    public Planet(double m, double l, int x, int y, BufferedImage im)
+    {
+        setMass(m);
+        setAngMomen(l);
+        calc = new Calculations(m, L);
+        this.xPos = x + calc.distance;
+        this.yPos = y;
+        this.img = im;
     }
 
     public void draw(Graphics2D g) {
