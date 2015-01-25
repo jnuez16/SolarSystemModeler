@@ -52,5 +52,10 @@ public class SolarSystem {
             }
         }
     }
+    
+    public void reset(){
+        star.clear();
+        planet.clear();
+    }
 
 }
