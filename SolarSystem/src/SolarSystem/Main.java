@@ -64,6 +64,30 @@ public class Main extends javax.swing.JFrame {
         };
         timer.schedule(task, 100, 100);
 
+        try {
+            lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
+            lbLValue.setText(String.format("%d", sldrLMom.getValue() / 100));
+            xScreen = pnlScreen.getWidth() - 1;
+            yScreen = pnlScreen.getHeight() - 1;
+
+            URL url = this.getClass().getClassLoader().getResource("Resources/sSun60.png");
+            img = ImageIO.read(url);
+                        sun = new Star(placeholder, xScreen, yScreen, img);
+            // sun = new Star(placeholder, xScreen, yScreen, 50, 50);
+
+            
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    ss.simulate(t++, xScreen / 2, yScreen / 2);
+                    repaint();
+                }
+            };
+            timer.schedule(task, 100, 100);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void simulate() {
