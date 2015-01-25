@@ -10,12 +10,14 @@ import CelestialBodies.SolarSystem;
 import CelestialBodies.Star;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JSlider;
 
 /**
@@ -37,6 +39,8 @@ public class Main extends javax.swing.JFrame {
     int yScreen;
     int choice;
     int inc;
+//    URL bgUrl = this.getClass().getClassLoader().getResource("Resources/bkgrd.jpg");
+//    BufferedImage bgImg = null;
 
     /**
      * Creates new form Main
@@ -45,6 +49,8 @@ public class Main extends javax.swing.JFrame {
         initComponents();
 
         try {
+//                                    bgImg = ImageIO.read(bgUrl);
+
             lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
             lbLValue.setText(String.format("%d", sldrLMom.getValue() / 100));
             xScreen = pnlScreen.getWidth() - 1;
@@ -110,23 +116,37 @@ public class Main extends javax.swing.JFrame {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
 
-                sun.draw((Graphics2D)g);
-                //earth.draw((Graphics2D)g);
+                // if (bgImg != null){
+                    //      g.drawImage(bgImg, 0, 0, null);
+                    //  }
+                try{
+                    BufferedImage bgImg = null;
+                    bgImg = ImageIO.read(this.getClass().getClassLoader().getResource("Resources/bkgrd.jpg"));
+                    g.drawImage(bgImg, 0, 0, null);
 
-                if (!ss.getPlanets().isEmpty()){
-                    for (int i = 0; i < ss.getPlanets().size(); i++){
-                        ss.getPlanets().get(i).draw((Graphics2D)g.create());
+                    sun.draw((Graphics2D)g);
+                    //earth.draw((Graphics2D)g);
+
+                    if (!ss.getPlanets().isEmpty()){
+                        for (int i = 0; i < ss.getPlanets().size(); i++){
+                            ss.getPlanets().get(i).draw((Graphics2D)g.create());
+                        }
                     }
+                } catch (Exception e){
+                    e.printStackTrace();
                 }
+
             }
         };
         addPlanet = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Solar System Simulator");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         lbEarthImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/earth.gif"))); // NOI18N
 
-        lbEarth.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lbEarth.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lbEarth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbEarth.setText("Earth");
 
@@ -187,17 +207,17 @@ public class Main extends javax.swing.JFrame {
 
         lbJupiterImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/jupiter.gif"))); // NOI18N
 
-        lbJupiter.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lbJupiter.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lbJupiter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbJupiter.setText("Jupiter");
 
         lbVenusImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/venus.gif"))); // NOI18N
 
-        lbVenus.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lbVenus.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lbVenus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbVenus.setText("Venus");
 
-        lbMars.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lbMars.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lbMars.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbMars.setText("Mars");
 
@@ -209,7 +229,7 @@ public class Main extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(27, 27, 27)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -221,7 +241,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(lbVenusImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbVenus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbMarsImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,7 +348,6 @@ public class Main extends javax.swing.JFrame {
         );
 
         pnlScreen.setBackground(new java.awt.Color(0, 0, 0));
-        pnlScreen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout pnlScreenLayout = new javax.swing.GroupLayout(pnlScreen);
         pnlScreen.setLayout(pnlScreenLayout);
@@ -358,13 +377,13 @@ public class Main extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
                         .addGap(26, 26, 26)
                         .addComponent(pnlScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(addPlanet)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
