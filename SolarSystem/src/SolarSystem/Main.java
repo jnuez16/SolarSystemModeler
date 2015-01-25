@@ -43,26 +43,6 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
-        lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
-        lbLValue.setText(String.format("%d", sldrLMom.getValue() / 100));
-        xScreen = pnlScreen.getWidth() - 1;
-        yScreen = pnlScreen.getHeight() - 1;
-        sun = new Star(placeholder, xScreen, yScreen, 50, 50);
-        //earth = new Planet(1.0, 4.522613, xScreen / 2, yScreen / 2, 25, 25);
-
-        // TimerTask is animating the Planet earth. For testing I just manually
-        // added to the planet's x and y positions. At this point we can start
-        // getting things to work as intended. Note: I'll be adjust/moving where a lot
-        // of these things (objects, timertask, etc.) are after the demo. But for now
-        // I just want something to show :P
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                ss.simulate(t++, xScreen / 2, yScreen / 2);
-                repaint();
-            }
-        };
-        timer.schedule(task, 100, 100);
 
         try {
             lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
@@ -72,10 +52,9 @@ public class Main extends javax.swing.JFrame {
 
             URL url = this.getClass().getClassLoader().getResource("Resources/sSun60.png");
             img = ImageIO.read(url);
-                        sun = new Star(placeholder, xScreen, yScreen, img);
+            sun = new Star(placeholder, xScreen, yScreen, img);
             // sun = new Star(placeholder, xScreen, yScreen, 50, 50);
 
-            
             TimerTask task = new TimerTask() {
                 @Override
                 public void run() {
@@ -84,7 +63,7 @@ public class Main extends javax.swing.JFrame {
                 }
             };
             timer.schedule(task, 100, 100);
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -440,12 +419,14 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         // When Venus Radio Button is selected!!
         choice = 1;
+        sldrMass.setMajorTickSpacing(10);
+        sldrMass.setMinimum(81 - 50);
+        sldrMass.setMaximum(81 + 50);
         sldrMass.setValue(81);
-        sldrMass.setMinimum(81-50);
-        sldrMass.setMaximum(81+50);
+        sldrLMom.setMajorTickSpacing(10);
+        sldrLMom.setMinimum(300 - 150);
+        sldrLMom.setMaximum(300 + 150);
         sldrLMom.setValue(300);
-        sldrLMom.setMinimum(300-150);
-        sldrLMom.setMaximum(300+150);
         lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
         lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
     }//GEN-LAST:event_rdoVenusActionPerformed
@@ -479,12 +460,14 @@ public class Main extends javax.swing.JFrame {
     private void rdoEarthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoEarthActionPerformed
         // TODO add your handling code here:
         choice = 2;
+        sldrMass.setMajorTickSpacing(10);
+        sldrMass.setMinimum(100 - 50);
+        sldrMass.setMaximum(100 + 50);
         sldrMass.setValue(100);
-        sldrMass.setMinimum(100-50);
-        sldrMass.setMaximum(100+50);
+        sldrLMom.setMajorTickSpacing(10);
+        sldrLMom.setMinimum(450 - 150);
+        sldrLMom.setMaximum(450 + 150);
         sldrLMom.setValue(450);
-        sldrLMom.setMinimum(450-150);
-        sldrLMom.setMaximum(450+150);
         lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
         lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
     }//GEN-LAST:event_rdoEarthActionPerformed
@@ -492,31 +475,32 @@ public class Main extends javax.swing.JFrame {
     private void rdoMarsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoMarsActionPerformed
         // TODO add your handling code here:
         choice = 3;
-        sldrMass.setValue(10);
-        sldrMass.setMinimum(0);
-        sldrMass.setMaximum(20);
         sldrMass.setMajorTickSpacing(2);
-        sldrLMom.setValue(60);
+        sldrMass.setMinimum(1);
+        sldrMass.setMaximum(20);
+        sldrMass.setValue(10);
+        sldrLMom.setMajorTickSpacing(10);
         sldrLMom.setMinimum(0);
         sldrLMom.setMaximum(100);
-        sldrLMom.setMajorTickSpacing(10);
-        lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100.0));
-        lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100.0));
-        
+        sldrLMom.setValue(60);
+        lbMValue.setText(String.format("%.3f", (double) sldrMass.getValue() / 100.0));
+        lbLValue.setText(String.format("%.3f", (double) sldrLMom.getValue() / 100.0));
+
     }//GEN-LAST:event_rdoMarsActionPerformed
 
     private void rdoJupiterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoJupiterActionPerformed
         // TODO add your handling code here:
         choice = 4;
+        sldrMass.setMajorTickSpacing(50);
+        sldrMass.setMinimum(31700 - 500);
+        sldrMass.setMaximum(31700 + 500);
         sldrMass.setValue(31800);
-        sldrMass.setMinimum(31783-500);
-        sldrMass.setMaximum(31783+500);
-        sldrLMom.setValue(318200);
-        sldrLMom.setMinimum(318000-20000);
-        sldrLMom.setMaximum(318000+20000);
         sldrLMom.setMajorTickSpacing(5000);
-        lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
-        lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
+        sldrLMom.setMinimum(318000 - 20000);
+        sldrLMom.setMaximum(318000 + 20000);
+        sldrLMom.setValue(318200);
+        lbMValue.setText(String.format("%.3f", (double) sldrMass.getValue() / 100));
+        lbLValue.setText(String.format("%.3f", (double) sldrLMom.getValue() / 100));
     }//GEN-LAST:event_rdoJupiterActionPerformed
 
     /**
