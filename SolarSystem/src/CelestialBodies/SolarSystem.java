@@ -16,7 +16,7 @@ public class SolarSystem {
     private List<Planet> planet = new ArrayList<Planet>();
     private List<Star> star = new ArrayList<Star>();
 
-    public void addPlanet(double mass, double l) {
+    public void addPlanet(double mass, double l) throws Exception {
         planet.add(new Planet(mass, l));
     }
 
