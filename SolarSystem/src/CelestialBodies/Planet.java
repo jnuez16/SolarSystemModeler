@@ -26,14 +26,14 @@ public class Planet {
     private Calculations calc = null;
     BufferedImage img = null;
 
-    public Planet(double m, double l) {
+    public Planet(double m, double l) throws Exception {
         setMass(m);
         setAngMomen(l);
         calc = new Calculations(m, L);
 
     }
 
-    public Planet(double m, double l, int x, int y, int width, int height) {
+    public Planet(double m, double l, int x, int y, int width, int height) throws Exception {
         setMass(m);
         setAngMomen(l);
         calc = new Calculations(m, L);
@@ -44,7 +44,7 @@ public class Planet {
         this.height = height;
     }
     
-    public Planet(double m, double l, int x, int y, BufferedImage img)
+    public Planet(double m, double l, int x, int y, BufferedImage img) throws Exception
     {
         setMass(m);
         setAngMomen(l);
