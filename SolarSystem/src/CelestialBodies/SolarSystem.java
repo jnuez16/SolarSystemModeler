@@ -8,7 +8,8 @@ package CelestialBodies;
 import java.util.*;
 
 /**
- *
+ * Contains a List of planets, a List of stars, and a method for updating the
+ * coordinates of all of the planets and stars that are contained within the List.
  * @author jnuez_000
  */
 public class SolarSystem {

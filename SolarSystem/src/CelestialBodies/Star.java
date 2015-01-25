@@ -9,7 +9,8 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 /**
- *
+ * Creates a star with x, y coordinates, mass, and a method for drawing
+ * an image of the star.
  * @author jnuez16
  */
 public class Star {

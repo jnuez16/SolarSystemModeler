@@ -24,6 +24,10 @@ import javax.imageio.ImageIO;
 public class Main extends javax.swing.JFrame {
 
     int placeholder = 50;   // temporarily being used for mass & momentum
+    int choice;
+    int inc;
+    int xScreen;
+    int yScreen;
     double t = 0;
     Double mass = .5;
     Double angMom = 1.0;
@@ -32,10 +36,7 @@ public class Main extends javax.swing.JFrame {
     SolarSystem ss = new SolarSystem();
     Timer timer = new Timer();
     BufferedImage img = null;
-    int xScreen;
-    int yScreen;
-    int choice;
-    int inc;
+    
 
     /**
      * Creates new form Main

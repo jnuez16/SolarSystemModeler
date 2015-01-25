@@ -10,7 +10,8 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 /**
- *
+ * Creates a planet with x, y coordinates, mass, momentum, and a method for drawing
+ * an image of the planet.
  * @author jnuez_000
  */
 public class Planet {
