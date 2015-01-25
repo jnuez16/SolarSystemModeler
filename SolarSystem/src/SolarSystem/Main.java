@@ -131,7 +131,7 @@ public class Main extends javax.swing.JFrame {
         setTitle("Solar System Simulator");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        lbEarthImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/earth.gif"))); // NOI18N
+        lbEarthImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Earth100.png"))); // NOI18N
 
         lbEarth.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lbEarth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -192,13 +192,13 @@ public class Main extends javax.swing.JFrame {
                 .addGap(56, 56, 56))
         );
 
-        lbJupiterImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/jupiter.gif"))); // NOI18N
+        lbJupiterImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Jupiter100.png"))); // NOI18N
 
         lbJupiter.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lbJupiter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbJupiter.setText("Jupiter");
 
-        lbVenusImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/venus.gif"))); // NOI18N
+        lbVenusImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Venus100.png"))); // NOI18N
 
         lbVenus.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lbVenus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -209,7 +209,7 @@ public class Main extends javax.swing.JFrame {
         lbMars.setText("Mars");
 
         lbMarsImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbMarsImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/mars.gif"))); // NOI18N
+        lbMarsImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Mars100.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -366,19 +366,18 @@ public class Main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
-                        .addGap(26, 26, 26)
-                        .addComponent(pnlScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
+                        .addGap(24, 24, 24)
                         .addComponent(addPlanet)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnReset)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnReset)
+                        .addGap(36, 36, 36)))
+                .addGap(26, 26, 26)
+                .addComponent(pnlScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -390,12 +389,12 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addPlanet)
-                    .addComponent(btnReset))
-                .addContainerGap(52, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(addPlanet)
+                            .addComponent(btnReset))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -464,7 +463,7 @@ public class Main extends javax.swing.JFrame {
                 img = ImageIO.read(url);
                 ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
             } else if (choice == 4) {
-                URL url = this.getClass().getClassLoader().getResource("Resources/sJupiter40_NEW.png");
+                URL url = this.getClass().getClassLoader().getResource("Resources/sJupiter40.png");
                 img = ImageIO.read(url);
                 ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
             }
@@ -500,8 +499,8 @@ public class Main extends javax.swing.JFrame {
         sldrLMom.setMinimum(0);
         sldrLMom.setMaximum(100);
         sldrLMom.setValue(60);
-        lbMValue.setText(String.format("%.3f", (double) sldrMass.getValue() / 100.0));
-        lbLValue.setText(String.format("%.3f", (double) sldrLMom.getValue() / 100.0));
+        lbMValue.setText(String.format("%.2f", (double) sldrMass.getValue() / 100.0));
+        lbLValue.setText(String.format("%.2f", (double) sldrLMom.getValue() / 100.0));
 
     }//GEN-LAST:event_rdoMarsActionPerformed
 
@@ -516,8 +515,8 @@ public class Main extends javax.swing.JFrame {
         sldrLMom.setMinimum(318000 - 20000);
         sldrLMom.setMaximum(318000 + 20000);
         sldrLMom.setValue(318200);
-        lbMValue.setText(String.format("%.3f", (double) sldrMass.getValue() / 100));
-        lbLValue.setText(String.format("%.3f", (double) sldrLMom.getValue() / 100));
+        lbMValue.setText(String.format("%.2f", (double) sldrMass.getValue() / 100));
+        lbLValue.setText(String.format("%.2f", (double) sldrLMom.getValue() / 100));
     }//GEN-LAST:event_rdoJupiterActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
