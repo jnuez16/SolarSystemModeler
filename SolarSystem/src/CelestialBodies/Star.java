@@ -36,7 +36,7 @@ public class Star {
     
     public void draw(Graphics2D g){
         g.setPaint(Color.YELLOW);
-        g.fill(new Ellipse2D.Double(xPos, yPos, width, height));
+        g.fill(new Ellipse2D.Double(xPos-(width/2), yPos-(height/2), width, height));
     }
     
     public void setMass(double m)

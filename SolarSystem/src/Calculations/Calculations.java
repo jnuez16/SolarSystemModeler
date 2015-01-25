@@ -12,11 +12,11 @@ package Calculations;
 public class Calculations {
 
     static final Double G = 6.67384e-11;
-    private static Double M;
-    private static Double m;
-    private static Double l;
-    public static Double distance;
-    private static Double dist;
+    private Double M;
+    private Double m;
+    private Double l;
+    private Double distance;
+    private Double dist;
 
     public Calculations(Double planetMass, Double angMomentum) {
         m = planetMass;
@@ -41,8 +41,13 @@ public class Calculations {
 
         return r;
     }
+    
+    public Double getDistance()
+    {
+        return distance;
+    }
 
-    public static Double secant(int n, Double del, Double x, Double dx) {
+    public Double secant(int n, Double del, Double x, Double dx) {
         int k = 0;
         Double x1 = x + dx, x2 = 0.0;
         Double g0 = g(x);
@@ -74,12 +79,12 @@ public class Calculations {
         return x1;
     }
 
-    public static Double g(Double x) {
+    public Double g(Double x) {
         Double u = ((-(G * m * M) / x) + (((l * l) / (2 * x * x)) * ((m + M) / (m * M))));
         return u;
     }
 
-    public static Double f(Double x) {
+    public Double f(Double x) {
         Double u = ((-(G * m * M) / (x * x)) + (((l * l) / (x * x * x)) * ((m + M) / (m * M))));
         return u;
     }

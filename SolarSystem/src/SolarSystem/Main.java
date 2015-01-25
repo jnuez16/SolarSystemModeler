@@ -26,8 +26,8 @@ public class Main extends javax.swing.JFrame {
 
     int placeholder = 50;   // temporarily being used for mass & momentum
     double t = 0;
-    Double mass;
-    Double angMom;
+    Double mass = .5;
+    Double angMom = 1.0;
     Star sun;
     Planet earth;
     SolarSystem ss = new SolarSystem();
@@ -36,6 +36,7 @@ public class Main extends javax.swing.JFrame {
     int xScreen;
     int yScreen;
     int choice;
+    int inc;
 
     /**
      * Creates new form Main
@@ -47,7 +48,7 @@ public class Main extends javax.swing.JFrame {
         xScreen = pnlScreen.getWidth() - 1;
         yScreen = pnlScreen.getHeight() - 1;
         sun = new Star(placeholder, xScreen, yScreen, 50, 50);
-        earth = new Planet(1.0, 4.522613, xScreen / 2, yScreen / 2, 25, 25);
+        //earth = new Planet(1.0, 4.522613, xScreen / 2, yScreen / 2, 25, 25);
 
         // TimerTask is animating the Planet earth. For testing I just manually
         // added to the planet's x and y positions. At this point we can start
@@ -111,7 +112,7 @@ public class Main extends javax.swing.JFrame {
 
                 if (!ss.getPlanets().isEmpty()){
                     for (int i = 0; i < ss.getPlanets().size(); i++){
-                        ss.getPlanets().get(i).draw((Graphics2D) g);
+                        ss.getPlanets().get(i).draw((Graphics2D)g.create());
                     }
                 }
             }
@@ -272,7 +273,7 @@ public class Main extends javax.swing.JFrame {
 
         sldrLMom.setMajorTickSpacing(10);
         sldrLMom.setMaximum(500);
-        sldrLMom.setMinimum(100);
+        sldrLMom.setMinimum(200);
         sldrLMom.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sldrLMomStateChanged(evt);
@@ -395,6 +396,10 @@ public class Main extends javax.swing.JFrame {
             lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
         } else if (!sldrMass.getValueIsAdjusting()) {
             mass = (double) sldrMass.getValue() / 100;
+            inc = (sldrMass.getValue()-50)*5;
+            sldrLMom.setMinimum(100+inc);
+            sldrLMom.setMaximum(500+inc);
+            lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
         }
     }//GEN-LAST:event_sldrMassStateChanged
 

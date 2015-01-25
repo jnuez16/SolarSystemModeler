@@ -38,7 +38,7 @@ public class Planet {
         setAngMomen(l);
         calc = new Calculations(m, L);
 
-        this.xPos = x + calc.distance;
+        this.xPos = x + calc.getDistance();
         this.yPos = y;
         this.width = width;
         this.height = height;
@@ -49,7 +49,7 @@ public class Planet {
         setMass(m);
         setAngMomen(l);
         calc = new Calculations(m, L);
-        this.xPos = x + calc.distance;
+        this.xPos = x + calc.getDistance();
         this.yPos = y;
         this.img = img;
     }
@@ -60,7 +60,7 @@ public class Planet {
 //    }
     public void draw(Graphics2D g) {
         if (img != null) {
-            g.drawImage(img, null, (int)xPos, (int)yPos);
+            g.drawImage(img, null, (int)xPos-(img.getWidth()/2), (int)yPos-(img.getHeight()/2));
         } 
     }
 
@@ -93,7 +93,7 @@ public class Planet {
     }
 
     public double getXPos(double t, double x) {
-        return (calc.distance * Math.cos(calc.theta(t))) + x;
+        return (calc.getDistance() * Math.cos(calc.theta(t))) + x;
     }
 
     public double getYPos() {
@@ -101,7 +101,7 @@ public class Planet {
     }
 
     public double getYPos(double t, double y) {
-        return (calc.distance * Math.sin(calc.theta(t))) + y;
+        return (calc.getDistance() * Math.sin(calc.theta(t))) + y;
     }
 
 //    public double distance(double starMass)
