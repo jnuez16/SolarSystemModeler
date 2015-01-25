@@ -6,7 +6,7 @@
 package Calculations;
 
 /**
- *
+ * Used for calculating the distance, time, and angle of the planet/star.
  * @author jnuez_000
  */
 public class Calculations {
@@ -26,6 +26,7 @@ public class Calculations {
      * @param planetMass mass of the planet to use in the calculation must be a
      * factor of Earth's mass
      * @param angMomentum angular momentum of the planet
+     * @throws Exception thrown when planetMass is 0 or less
      */
     public Calculations(Double planetMass, Double angMomentum) throws Exception {
         if (planetMass <= 0) {
@@ -47,6 +48,7 @@ public class Calculations {
      * @param planetMass mass of the planet to use in the calculation--must be a
      * factor of Earth's mass
      * @param angMomentum angular momentum of the planet
+     * @throws Exception when planet or star mass is 0 or less
      */
     public Calculations(Double starMass, Double planetMass, Double angMomentum) throws Exception {
         if (planetMass <= 0 || starMass <= 0) {
