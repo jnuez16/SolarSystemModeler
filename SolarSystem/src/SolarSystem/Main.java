@@ -43,27 +43,30 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
-        lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
-        lbLValue.setText(String.format("%d", sldrLMom.getValue() / 100));
-        xScreen = pnlScreen.getWidth() - 1;
-        yScreen = pnlScreen.getHeight() - 1;
-        sun = new Star(placeholder, xScreen, yScreen, 50, 50);
-        //earth = new Planet(1.0, 4.522613, xScreen / 2, yScreen / 2, 25, 25);
+        try {
+            lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
+            lbLValue.setText(String.format("%d", sldrLMom.getValue() / 100));
+            xScreen = pnlScreen.getWidth() - 1;
+            yScreen = pnlScreen.getHeight() - 1;
 
-        // TimerTask is animating the Planet earth. For testing I just manually
-        // added to the planet's x and y positions. At this point we can start
-        // getting things to work as intended. Note: I'll be adjust/moving where a lot
-        // of these things (objects, timertask, etc.) are after the demo. But for now
-        // I just want something to show :P
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                ss.simulate(t++, xScreen / 2, yScreen / 2);
-                repaint();
-            }
-        };
-        timer.schedule(task, 100, 100);
+            URL url = this.getClass().getClassLoader().getResource("Resources/sSun60.png");
+            img = ImageIO.read(url);
+                        sun = new Star(placeholder, xScreen, yScreen, img);
+            // sun = new Star(placeholder, xScreen, yScreen, 50, 50);
 
+            
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    ss.simulate(t++, xScreen / 2, yScreen / 2);
+                    repaint();
+                }
+            };
+            timer.schedule(task, 100, 100);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void simulate() {
@@ -396,9 +399,9 @@ public class Main extends javax.swing.JFrame {
             lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
         } else if (!sldrMass.getValueIsAdjusting()) {
             mass = (double) sldrMass.getValue() / 100;
-            inc = (sldrMass.getValue()-50)*5;
-            sldrLMom.setMinimum(100+inc);
-            sldrLMom.setMaximum(500+inc);
+            inc = (sldrMass.getValue() - 50) * 5;
+            sldrLMom.setMinimum(100 + inc);
+            sldrLMom.setMaximum(500 + inc);
             lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
         }
     }//GEN-LAST:event_sldrMassStateChanged
