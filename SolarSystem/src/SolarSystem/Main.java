@@ -10,15 +10,11 @@ import CelestialBodies.SolarSystem;
 import CelestialBodies.Star;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.imageio.ImageIO;
-import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import javax.swing.JSlider;
 
 /**
  *
@@ -39,8 +35,6 @@ public class Main extends javax.swing.JFrame {
     int yScreen;
     int choice;
     int inc;
-//    URL bgUrl = this.getClass().getClassLoader().getResource("Resources/bkgrd.jpg");
-//    BufferedImage bgImg = null;
 
     /**
      * Creates new form Main
@@ -49,8 +43,6 @@ public class Main extends javax.swing.JFrame {
         initComponents();
 
         try {
-//                                    bgImg = ImageIO.read(bgUrl);
-
             lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
             lbLValue.setText(String.format("%d", sldrLMom.getValue() / 100));
             xScreen = pnlScreen.getWidth() - 1;
@@ -59,7 +51,6 @@ public class Main extends javax.swing.JFrame {
             URL url = this.getClass().getClassLoader().getResource("Resources/sSun60.png");
             img = ImageIO.read(url);
             sun = new Star(placeholder, xScreen, yScreen, img);
-            // sun = new Star(placeholder, xScreen, yScreen, 50, 50);
 
             TimerTask task = new TimerTask() {
                 @Override
@@ -73,10 +64,6 @@ public class Main extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public void simulate() {
-
     }
 
     /**
@@ -116,17 +103,16 @@ public class Main extends javax.swing.JFrame {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
 
-                // if (bgImg != null){
-                    //      g.drawImage(bgImg, 0, 0, null);
-                    //  }
                 try{
+                    // Draw background with image of space
                     BufferedImage bgImg = null;
                     bgImg = ImageIO.read(this.getClass().getClassLoader().getResource("Resources/bkgrd.jpg"));
                     g.drawImage(bgImg, 0, 0, null);
 
+                    // Draw the sun
                     sun.draw((Graphics2D)g);
-                    //earth.draw((Graphics2D)g);
 
+                    // Draw the planets
                     if (!ss.getPlanets().isEmpty()){
                         for (int i = 0; i < ss.getPlanets().size(); i++){
                             ss.getPlanets().get(i).draw((Graphics2D)g.create());
