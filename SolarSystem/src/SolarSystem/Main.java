@@ -17,7 +17,8 @@ import java.util.TimerTask;
 import javax.imageio.ImageIO;
 
 /**
- *
+ * Program displays a simulation of planets orbiting around a star, default planet
+ * values represent Earth's solar system.
  * @author Brennan
  */
 public class Main extends javax.swing.JFrame {
@@ -52,6 +53,7 @@ public class Main extends javax.swing.JFrame {
             img = ImageIO.read(url);
             sun = new Star(placeholder, xScreen, yScreen, img);
 
+            // TimerTask for animating the simulation
             TimerTask task = new TimerTask() {
                 @Override
                 public void run() {
@@ -407,14 +409,18 @@ public class Main extends javax.swing.JFrame {
 //                int fps = (int)mSlider.getValue();
 //                lbMValue.setText("" + fps);
 //            }
-        if (sldrMass.getValueIsAdjusting()) {
-            lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
-        } else if (!sldrMass.getValueIsAdjusting()) {
-            mass = (double) sldrMass.getValue() / 100;
-            //inc = (sldrMass.getValue()-sldrMass.getMinimum())*5;
-            //sldrLMom.setMinimum(sldrLMom.getMinimum()+inc);
-            //sldrLMom.setMaximum(sldrLMom.getMaximum()+inc);
-            //lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
+        try {
+            if (sldrMass.getValueIsAdjusting()) {
+                lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
+            } else if (!sldrMass.getValueIsAdjusting()) {
+                mass = (double) sldrMass.getValue() / 100;
+                //inc = (sldrMass.getValue()-sldrMass.getMinimum())*5;
+                //sldrLMom.setMinimum(sldrLMom.getMinimum()+inc);
+                //sldrLMom.setMaximum(sldrLMom.getMaximum()+inc);
+                //lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_sldrMassStateChanged
 
@@ -424,31 +430,38 @@ public class Main extends javax.swing.JFrame {
 //            int fps = (int) LSlider.getValue();
 //            lbLValue.setText("" + fps);
 //        }
-        if (sldrLMom.getValueIsAdjusting()) {
-            lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
-        } else if (!sldrLMom.getValueIsAdjusting()) {
-            angMom = (double) sldrLMom.getValue() / 100;
+        try {
+            if (sldrLMom.getValueIsAdjusting()) {
+                lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
+            } else if (!sldrLMom.getValueIsAdjusting()) {
+                angMom = (double) sldrLMom.getValue() / 100;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_sldrLMomStateChanged
 
     private void rdoVenusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoVenusActionPerformed
-        // TODO add your handling code here:
         // When Venus Radio Button is selected!!
-        choice = 1;
-        sldrMass.setMajorTickSpacing(10);
-        sldrMass.setMinimum(81 - 50);
-        sldrMass.setMaximum(81 + 50);
-        sldrMass.setValue(81);
-        sldrLMom.setMajorTickSpacing(10);
-        sldrLMom.setMinimum(300 - 150);
-        sldrLMom.setMaximum(300 + 150);
-        sldrLMom.setValue(300);
-        lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
-        lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
+        try {
+            choice = 1;
+            sldrMass.setMajorTickSpacing(10);
+            sldrMass.setMinimum(81 - 50);
+            sldrMass.setMaximum(81 + 50);
+            sldrMass.setValue(81);
+            sldrLMom.setMajorTickSpacing(10);
+            sldrLMom.setMinimum(300 - 150);
+            sldrLMom.setMaximum(300 + 150);
+            sldrLMom.setValue(300);
+            lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
+            lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_rdoVenusActionPerformed
 
     private void addPlanetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPlanetActionPerformed
-        // TODO add your handling code here:
+        // When "Add Planet" button is clicked
         try {
             if (choice == 1) {
                 URL url = this.getClass().getClassLoader().getResource("Resources/sVenus.png");
@@ -467,45 +480,53 @@ public class Main extends javax.swing.JFrame {
                 img = ImageIO.read(url);
                 ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
             }
-            // repaint();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_addPlanetActionPerformed
 
     private void rdoEarthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoEarthActionPerformed
-        // TODO add your handling code here:
-        choice = 2;
-        sldrMass.setMajorTickSpacing(10);
-        sldrMass.setMinimum(100 - 50);
-        sldrMass.setMaximum(100 + 50);
-        sldrMass.setValue(100);
-        sldrLMom.setMajorTickSpacing(10);
-        sldrLMom.setMinimum(450 - 150);
-        sldrLMom.setMaximum(450 + 150);
-        sldrLMom.setValue(450);
-        lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
-        lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
+        // Earth radio button is selected
+        try {
+            choice = 2;
+            sldrMass.setMajorTickSpacing(10);
+            sldrMass.setMinimum(100 - 50);
+            sldrMass.setMaximum(100 + 50);
+            sldrMass.setValue(100);
+            sldrLMom.setMajorTickSpacing(10);
+            sldrLMom.setMinimum(450 - 150);
+            sldrLMom.setMaximum(450 + 150);
+            sldrLMom.setValue(450);
+            lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
+            lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_rdoEarthActionPerformed
 
     private void rdoMarsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoMarsActionPerformed
-        // TODO add your handling code here:
-        choice = 3;
-        sldrMass.setMajorTickSpacing(2);
-        sldrMass.setMinimum(1);
-        sldrMass.setMaximum(20);
-        sldrMass.setValue(10);
-        sldrLMom.setMajorTickSpacing(10);
-        sldrLMom.setMinimum(0);
-        sldrLMom.setMaximum(100);
-        sldrLMom.setValue(60);
-        lbMValue.setText(String.format("%.2f", (double) sldrMass.getValue() / 100.0));
-        lbLValue.setText(String.format("%.2f", (double) sldrLMom.getValue() / 100.0));
+        // Mars radio button is selected
+        try {
+            choice = 3;
+            sldrMass.setMajorTickSpacing(2);
+            sldrMass.setMinimum(1);
+            sldrMass.setMaximum(20);
+            sldrMass.setValue(10);
+            sldrLMom.setMajorTickSpacing(10);
+            sldrLMom.setMinimum(0);
+            sldrLMom.setMaximum(100);
+            sldrLMom.setValue(60);
+            lbMValue.setText(String.format("%.2f", (double) sldrMass.getValue() / 100.0));
+            lbLValue.setText(String.format("%.2f", (double) sldrLMom.getValue() / 100.0));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }//GEN-LAST:event_rdoMarsActionPerformed
 
     private void rdoJupiterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoJupiterActionPerformed
-        // TODO add your handling code here:
+        // Jupiter radio button is selected
+        try {
         choice = 4;
         sldrMass.setMajorTickSpacing(50);
         sldrMass.setMinimum(31700 - 500);
@@ -517,10 +538,13 @@ public class Main extends javax.swing.JFrame {
         sldrLMom.setValue(318200);
         lbMValue.setText(String.format("%.2f", (double) sldrMass.getValue() / 100));
         lbLValue.setText(String.format("%.2f", (double) sldrLMom.getValue() / 100));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_rdoJupiterActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-        // Clears the planets from the SolarSystem object
+        // Clears the planets/stars from the SolarSystem object
         ss.reset();
     }//GEN-LAST:event_btnResetActionPerformed
 
