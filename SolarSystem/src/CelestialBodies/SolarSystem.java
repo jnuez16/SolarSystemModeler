@@ -16,30 +16,63 @@ public class SolarSystem {
     private List<Planet> planet = new ArrayList<Planet>();
     private List<Star> star = new ArrayList<Star>();
 
+    /**
+     * Adds a planet to a List of planets
+     * @param mass mass of the planet being added
+     * @param l angular momentum of the planet being added
+     * @throws Exception if mass is less than or equal to zero
+     */
     public void addPlanet(double mass, double l) throws Exception {
         planet.add(new Planet(mass, l));
     }
 
+    /**
+     * Adds a planet to a List of planets
+     * @param p Planet with specified values
+     */
     public void addPlanet(Planet p) {
         planet.add(p);
     }
 
-    public void addStar(double mass) {
+    /**
+     * Adds a star to a list of stars
+     * @param mass mass of the star
+     * @throws Exception if mass is less than or equal to zero
+     */
+    public void addStar(double mass) throws Exception {
         star.add(new Star(mass));
     }
 
+    /**
+     * Adds a star to a list of stars
+     * @param s Star with specified values
+     */
     public void addStar(Star s) {
         star.add(s);
     }
 
+    /**
+     * Accessor function for the list of planets
+     * @return a List of planets
+     */
     public List<Planet> getPlanets() {
         return planet;
     }
 
+    /**
+     * Accessor function for the list of stars
+     * @return a List of stars
+     */
     public List<Star> getStars() {
         return star;
     }
 
+    /**
+     * A function that sets the position of the stars and planets at a specific time
+     * @param t time to indicate the position of planets and stars
+     * @param x x position of planets and stars
+     * @param y y position of planets and stars
+     */
     public void simulate(double t, int x, int y) {
 //        if (!star.isEmpty()) {
 //
@@ -53,6 +86,9 @@ public class SolarSystem {
         }
     }
     
+    /**
+     * clears the list of stars and planets
+     */
     public void reset(){
         star.clear();
         planet.clear();
