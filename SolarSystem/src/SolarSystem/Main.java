@@ -404,20 +404,11 @@ public class Main extends javax.swing.JFrame {
 
     private void sldrMassStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldrMassStateChanged
         // TODO add your handling code here:
-//        JSlider mSlider = (JSlider)evt.getSource();
-//            if (mSlider.getValueIsAdjusting()){
-//                int fps = (int)mSlider.getValue();
-//                lbMValue.setText("" + fps);
-//            }
         try {
             if (sldrMass.getValueIsAdjusting()) {
                 lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
             } else if (!sldrMass.getValueIsAdjusting()) {
                 mass = (double) sldrMass.getValue() / 100;
-                //inc = (sldrMass.getValue()-sldrMass.getMinimum())*5;
-                //sldrLMom.setMinimum(sldrLMom.getMinimum()+inc);
-                //sldrLMom.setMaximum(sldrLMom.getMaximum()+inc);
-                //lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -425,11 +416,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_sldrMassStateChanged
 
     private void sldrLMomStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldrLMomStateChanged
-//        JSlider LSlider = (JSlider) evt.getSource();
-//        if (!LSlider.getValueIsAdjusting()) {
-//            int fps = (int) LSlider.getValue();
-//            lbLValue.setText("" + fps);
-//        }
+
         try {
             if (sldrLMom.getValueIsAdjusting()) {
                 lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
