@@ -218,7 +218,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(lbVenusImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbVenus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbMarsImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,14 +294,10 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(sldrLMom, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sldrMass, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lbLValue, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lbMValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(3, 3, 3)))
-                .addContainerGap())
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbMValue, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                    .addComponent(lbLValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -360,12 +356,12 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane1))
-                        .addGap(44, 44, 44)
+                        .addGap(26, 26, 26)
                         .addComponent(pnlScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(addPlanet)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,10 +392,10 @@ public class Main extends javax.swing.JFrame {
             lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
         } else if (!sldrMass.getValueIsAdjusting()) {
             mass = (double) sldrMass.getValue() / 100;
-            inc = (sldrMass.getValue()-50)*5;
-            sldrLMom.setMinimum(100+inc);
-            sldrLMom.setMaximum(500+inc);
-            lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
+            //inc = (sldrMass.getValue()-sldrMass.getMinimum())*5;
+            //sldrLMom.setMinimum(sldrLMom.getMinimum()+inc);
+            //sldrLMom.setMaximum(sldrLMom.getMaximum()+inc);
+            //lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
         }
     }//GEN-LAST:event_sldrMassStateChanged
 
@@ -420,6 +416,14 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         // When Venus Radio Button is selected!!
         choice = 1;
+        sldrMass.setValue(81);
+        sldrMass.setMinimum(81-50);
+        sldrMass.setMaximum(81+50);
+        sldrLMom.setValue(300);
+        sldrLMom.setMinimum(300-150);
+        sldrLMom.setMaximum(300+150);
+        lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
+        lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
     }//GEN-LAST:event_rdoVenusActionPerformed
 
     private void addPlanetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPlanetActionPerformed
@@ -451,16 +455,44 @@ public class Main extends javax.swing.JFrame {
     private void rdoEarthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoEarthActionPerformed
         // TODO add your handling code here:
         choice = 2;
+        sldrMass.setValue(100);
+        sldrMass.setMinimum(100-50);
+        sldrMass.setMaximum(100+50);
+        sldrLMom.setValue(450);
+        sldrLMom.setMinimum(450-150);
+        sldrLMom.setMaximum(450+150);
+        lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
+        lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
     }//GEN-LAST:event_rdoEarthActionPerformed
 
     private void rdoMarsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoMarsActionPerformed
         // TODO add your handling code here:
         choice = 3;
+        sldrMass.setValue(10);
+        sldrMass.setMinimum(0);
+        sldrMass.setMaximum(20);
+        sldrMass.setMajorTickSpacing(2);
+        sldrLMom.setValue(60);
+        sldrLMom.setMinimum(0);
+        sldrLMom.setMaximum(100);
+        sldrLMom.setMajorTickSpacing(10);
+        lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100.0));
+        lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100.0));
+        
     }//GEN-LAST:event_rdoMarsActionPerformed
 
     private void rdoJupiterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoJupiterActionPerformed
         // TODO add your handling code here:
         choice = 4;
+        sldrMass.setValue(31800);
+        sldrMass.setMinimum(31783-500);
+        sldrMass.setMaximum(31783+500);
+        sldrLMom.setValue(318200);
+        sldrLMom.setMinimum(318000-20000);
+        sldrLMom.setMaximum(318000+20000);
+        sldrLMom.setMajorTickSpacing(5000);
+        lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
+        lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
     }//GEN-LAST:event_rdoJupiterActionPerformed
 
     /**
