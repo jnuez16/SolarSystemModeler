@@ -464,7 +464,7 @@ public class Main extends javax.swing.JFrame {
                 img = ImageIO.read(url);
                 ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
             } else if (choice == 4) {
-                URL url = this.getClass().getClassLoader().getResource("Resources/sJupiter.png");
+                URL url = this.getClass().getClassLoader().getResource("Resources/sJupiter40_NEW.png");
                 img = ImageIO.read(url);
                 ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
             }
