@@ -11,14 +11,18 @@ import CelestialBodies.Star;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
- * Program displays a simulation of planets orbiting around a star, default planet
- * values represent Earth's solar system.
+ * Program displays a simulation of planets orbiting around a star, default
+ * planet values represent Earth's solar system.
+ *
  * @author Brennan
  */
 public class Main extends javax.swing.JFrame {
@@ -36,7 +40,6 @@ public class Main extends javax.swing.JFrame {
     SolarSystem ss = new SolarSystem();
     Timer timer = new Timer();
     BufferedImage img = null;
-    
 
     /**
      * Creates new form Main
@@ -88,12 +91,15 @@ public class Main extends javax.swing.JFrame {
         rdoEarth = new javax.swing.JRadioButton();
         rdoMars = new javax.swing.JRadioButton();
         rdoJupiter = new javax.swing.JRadioButton();
+        rdoAllPlanets = new javax.swing.JRadioButton();
         lbJupiterImg = new javax.swing.JLabel();
         lbJupiter = new javax.swing.JLabel();
         lbVenusImg = new javax.swing.JLabel();
         lbVenus = new javax.swing.JLabel();
         lbMars = new javax.swing.JLabel();
         lbMarsImg = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lbMass = new javax.swing.JLabel();
         lbL = new javax.swing.JLabel();
@@ -168,6 +174,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        btnGroup.add(rdoAllPlanets);
+        rdoAllPlanets.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoAllPlanetsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -180,19 +193,25 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(rdoMars)
                     .addComponent(rdoJupiter))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rdoAllPlanets)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
+                .addContainerGap()
+                .addComponent(rdoAllPlanets)
+                .addGap(49, 49, 49)
                 .addComponent(rdoVenus)
                 .addGap(139, 139, 139)
                 .addComponent(rdoEarth)
                 .addGap(135, 135, 135)
                 .addComponent(rdoMars)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(115, 115, 115)
                 .addComponent(rdoJupiter)
-                .addGap(56, 56, 56))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lbJupiterImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Jupiter100.png"))); // NOI18N
@@ -214,32 +233,46 @@ public class Main extends javax.swing.JFrame {
         lbMarsImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbMarsImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Mars100.png"))); // NOI18N
 
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setText("jLabel2");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbJupiterImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbJupiter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbMars, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbEarth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbEarthImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbVenusImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbVenus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbMarsImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbJupiterImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbJupiter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbMars, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbEarth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbEarthImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbVenusImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbVenus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbMarsImg)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
                         .addComponent(lbVenus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbVenusImg)
@@ -254,8 +287,9 @@ public class Main extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(lbJupiter)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbJupiterImg)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addComponent(lbJupiterImg))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -372,7 +406,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(addPlanet)
@@ -467,6 +501,8 @@ public class Main extends javax.swing.JFrame {
                 URL url = this.getClass().getClassLoader().getResource("Resources/sJupiter40.png");
                 img = ImageIO.read(url);
                 ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
+            } else if (choice == 5) {
+                setALL();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -515,18 +551,18 @@ public class Main extends javax.swing.JFrame {
     private void rdoJupiterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoJupiterActionPerformed
         // Jupiter radio button is selected
         try {
-        choice = 4;
-        sldrMass.setMajorTickSpacing(50);
-        sldrMass.setMinimum(31700 - 500);
-        sldrMass.setMaximum(31700 + 500);
-        sldrMass.setValue(31800);
-        sldrLMom.setMajorTickSpacing(5000);
-        sldrLMom.setMinimum(318000 - 20000);
-        sldrLMom.setMaximum(318000 + 20000);
-        sldrLMom.setValue(318200);
-        lbMValue.setText(String.format("%.2f", (double) sldrMass.getValue() / 100));
-        lbLValue.setText(String.format("%.2f", (double) sldrLMom.getValue() / 100));
-        } catch (Exception e){
+            choice = 4;
+            sldrMass.setMajorTickSpacing(50);
+            sldrMass.setMinimum(31700 - 500);
+            sldrMass.setMaximum(31700 + 500);
+            sldrMass.setValue(31800);
+            sldrLMom.setMajorTickSpacing(5000);
+            sldrLMom.setMinimum(318000 - 20000);
+            sldrLMom.setMaximum(318000 + 20000);
+            sldrLMom.setValue(318200);
+            lbMValue.setText(String.format("%.2f", (double) sldrMass.getValue() / 100));
+            lbLValue.setText(String.format("%.2f", (double) sldrLMom.getValue() / 100));
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_rdoJupiterActionPerformed
@@ -535,6 +571,40 @@ public class Main extends javax.swing.JFrame {
         // Clears the planets/stars from the SolarSystem object
         ss.reset();
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void rdoAllPlanetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoAllPlanetsActionPerformed
+        choice = 5;
+    }//GEN-LAST:event_rdoAllPlanetsActionPerformed
+
+    private void setALL() {
+        try {
+            // TODO add your handling code here:
+            mass = .81;
+            angMom = 3.000;
+            URL url = this.getClass().getClassLoader().getResource("Resources/sVenus.png");
+            img = ImageIO.read(url);
+            ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
+            mass = 1.0;
+            angMom = 4.500;
+            url = this.getClass().getClassLoader().getResource("Resources/sEarth.png");
+            img = ImageIO.read(url);
+            ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
+            mass = .10;
+            angMom = .60;
+            url = this.getClass().getClassLoader().getResource("Resources/sMars.png");
+            img = ImageIO.read(url);
+            ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
+            mass = 318.0;
+            angMom = 3182.0;
+            url = this.getClass().getClassLoader().getResource("Resources/sJupiter40.png");
+            img = ImageIO.read(url);
+            ss.addPlanet(new Planet(mass, angMom, xScreen / 2, yScreen / 2, img));
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -575,6 +645,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton addPlanet;
     private javax.swing.ButtonGroup btnGroup;
     private javax.swing.JButton btnReset;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
@@ -592,6 +664,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lbVenus;
     private javax.swing.JLabel lbVenusImg;
     private javax.swing.JPanel pnlScreen;
+    private javax.swing.JRadioButton rdoAllPlanets;
     private javax.swing.JRadioButton rdoEarth;
     private javax.swing.JRadioButton rdoJupiter;
     private javax.swing.JRadioButton rdoMars;
