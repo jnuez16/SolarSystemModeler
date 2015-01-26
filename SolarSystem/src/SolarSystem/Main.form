@@ -32,10 +32,10 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" alignment="0" min="-2" pref="259" max="-2" attributes="0"/>
+                  <Component id="scrollPlanetSelect" alignment="0" min="-2" pref="259" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Component id="addPlanet" min="-2" max="-2" attributes="0"/>
@@ -43,19 +43,19 @@
                       <Component id="btnReset" min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="32767" attributes="0"/>
               <Component id="pnlScreen" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="633" max="-2" attributes="0"/>
+                      <Component id="scrollPlanetSelect" min="-2" pref="633" max="-2" attributes="0"/>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -66,17 +66,17 @@
                   </Group>
                   <Component id="pnlScreen" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="20" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+    <Container class="javax.swing.JScrollPane" name="scrollPlanetSelect">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel1">
+        <Container class="javax.swing.JPanel" name="pnlPlanetSelect">
 
           <Layout>
             <DimensionLayout dim="0">
@@ -87,17 +87,15 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="lbAddAll" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lbJupiterImg" max="32767" attributes="0"/>
-                              <Component id="lbJupiter" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lbMars" max="32767" attributes="0"/>
-                              <Component id="lbEarth" max="32767" attributes="0"/>
-                              <Component id="lbEarthImg" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lbVenusImg" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lbVenus" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lbMarsImg" max="32767" attributes="0"/>
-                              <Component id="lbAddAllImg" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="lbJupiterImg" max="32767" attributes="0"/>
+                          <Component id="lbJupiter" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lbMars" max="32767" attributes="0"/>
+                          <Component id="lbEarth" max="32767" attributes="0"/>
+                          <Component id="lbEarthImg" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lbVenusImg" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lbVenus" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lbMarsImg" max="32767" attributes="0"/>
+                          <Component id="lbAddAllImg" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
