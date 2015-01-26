@@ -98,8 +98,8 @@ public class Main extends javax.swing.JFrame {
         lbVenus = new javax.swing.JLabel();
         lbMars = new javax.swing.JLabel();
         lbMarsImg = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lbAddAll = new javax.swing.JLabel();
+        lbAddAllImg = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lbMass = new javax.swing.JLabel();
         lbL = new javax.swing.JLabel();
@@ -233,9 +233,10 @@ public class Main extends javax.swing.JFrame {
         lbMarsImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbMarsImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Mars100.png"))); // NOI18N
 
-        jLabel1.setText("jLabel1");
+        lbAddAll.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lbAddAll.setText("Add All");
 
-        jLabel2.setText("jLabel2");
+        lbAddAllImg.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -259,19 +260,19 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(106, 106, 106)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))))
+                            .addComponent(lbAddAllImg)
+                            .addComponent(lbAddAll))))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lbAddAll)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(lbAddAllImg)
                         .addGap(18, 18, 18)
                         .addComponent(lbVenus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -441,7 +442,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             if (sldrMass.getValueIsAdjusting()) {
-                lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
+                lbMValue.setText(String.format("%.2f", (double) sldrMass.getValue() / 100));
             } else if (!sldrMass.getValueIsAdjusting()) {
                 mass = (double) sldrMass.getValue() / 100;
             }
@@ -454,7 +455,7 @@ public class Main extends javax.swing.JFrame {
 
         try {
             if (sldrLMom.getValueIsAdjusting()) {
-                lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
+                lbLValue.setText(String.format("%.2f", (double) sldrLMom.getValue() / 100));
             } else if (!sldrLMom.getValueIsAdjusting()) {
                 angMom = (double) sldrLMom.getValue() / 100;
             }
@@ -465,6 +466,9 @@ public class Main extends javax.swing.JFrame {
 
     private void rdoVenusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoVenusActionPerformed
         // When Venus Radio Button is selected!!
+        sldrMass.setEnabled(true);
+        sldrLMom.setEnabled(true);
+
         try {
             choice = 1;
             sldrMass.setMajorTickSpacing(10);
@@ -475,8 +479,8 @@ public class Main extends javax.swing.JFrame {
             sldrLMom.setMinimum(300 - 150);
             sldrLMom.setMaximum(300 + 150);
             sldrLMom.setValue(300);
-            lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
-            lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
+            lbMValue.setText(String.format("%.2f", (double) sldrMass.getValue() / 100));
+            lbLValue.setText(String.format("%.2f", (double) sldrLMom.getValue() / 100));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -511,6 +515,9 @@ public class Main extends javax.swing.JFrame {
 
     private void rdoEarthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoEarthActionPerformed
         // Earth radio button is selected
+        sldrMass.setEnabled(true);
+        sldrLMom.setEnabled(true);
+
         try {
             choice = 2;
             sldrMass.setMajorTickSpacing(10);
@@ -521,8 +528,8 @@ public class Main extends javax.swing.JFrame {
             sldrLMom.setMinimum(450 - 150);
             sldrLMom.setMaximum(450 + 150);
             sldrLMom.setValue(450);
-            lbMValue.setText(String.format("%.1f", (double) sldrMass.getValue() / 100));
-            lbLValue.setText(String.format("%.1f", (double) sldrLMom.getValue() / 100));
+            lbMValue.setText(String.format("%.2f", (double) sldrMass.getValue() / 100));
+            lbLValue.setText(String.format("%.2f", (double) sldrLMom.getValue() / 100));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -530,14 +537,17 @@ public class Main extends javax.swing.JFrame {
 
     private void rdoMarsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoMarsActionPerformed
         // Mars radio button is selected
+        sldrMass.setEnabled(true);
+        sldrLMom.setEnabled(true);
+
         try {
             choice = 3;
             sldrMass.setMajorTickSpacing(2);
-            sldrMass.setMinimum(1);
+            sldrMass.setMinimum(2);
             sldrMass.setMaximum(20);
             sldrMass.setValue(10);
             sldrLMom.setMajorTickSpacing(10);
-            sldrLMom.setMinimum(0);
+            sldrLMom.setMinimum(10);
             sldrLMom.setMaximum(100);
             sldrLMom.setValue(60);
             lbMValue.setText(String.format("%.2f", (double) sldrMass.getValue() / 100.0));
@@ -550,6 +560,9 @@ public class Main extends javax.swing.JFrame {
 
     private void rdoJupiterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoJupiterActionPerformed
         // Jupiter radio button is selected
+        sldrMass.setEnabled(true);
+        sldrLMom.setEnabled(true);
+
         try {
             choice = 4;
             sldrMass.setMajorTickSpacing(50);
@@ -574,6 +587,10 @@ public class Main extends javax.swing.JFrame {
 
     private void rdoAllPlanetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoAllPlanetsActionPerformed
         choice = 5;
+        sldrMass.setEnabled(false);
+        sldrLMom.setEnabled(false);
+        lbMValue.setText(String.format("%.2f", 0.0));
+        lbLValue.setText(String.format("%.2f", 0.0));
     }//GEN-LAST:event_rdoAllPlanetsActionPerformed
 
     private void setALL() {
@@ -645,12 +662,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton addPlanet;
     private javax.swing.ButtonGroup btnGroup;
     private javax.swing.JButton btnReset;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbAddAll;
+    private javax.swing.JLabel lbAddAllImg;
     private javax.swing.JLabel lbEarth;
     private javax.swing.JLabel lbEarthImg;
     private javax.swing.JLabel lbJupiter;
