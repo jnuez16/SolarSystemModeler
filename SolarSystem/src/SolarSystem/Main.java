@@ -375,16 +375,17 @@ public class Main extends javax.swing.JFrame {
         );
 
         pnlScreen.setBackground(new java.awt.Color(0, 0, 0));
+        pnlScreen.setPreferredSize(new java.awt.Dimension(800, 800));
 
         javax.swing.GroupLayout pnlScreenLayout = new javax.swing.GroupLayout(pnlScreen);
         pnlScreen.setLayout(pnlScreenLayout);
         pnlScreenLayout.setHorizontalGroup(
             pnlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 798, Short.MAX_VALUE)
+            .addGap(0, 794, Short.MAX_VALUE)
         );
         pnlScreenLayout.setVerticalGroup(
             pnlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 798, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
 
         addPlanet.setText("Add Planet");
@@ -415,9 +416,9 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(addPlanet)
                         .addGap(49, 49, 49)
                         .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(pnlScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(pnlScreen, 794, 794, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -432,7 +433,7 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addPlanet)
                             .addComponent(btnReset)))
-                    .addComponent(pnlScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -440,7 +441,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sldrMassStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldrMassStateChanged
-        // TODO add your handling code here:
+        // When the slider for Mass is changed
         try {
             if (sldrMass.getValueIsAdjusting()) {
                 lbMValue.setText(String.format("%.2f", (double) sldrMass.getValue() / 100));
@@ -453,7 +454,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_sldrMassStateChanged
 
     private void sldrLMomStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldrLMomStateChanged
-
+        // When the slider for Angular Momentum is moved
         try {
             if (sldrLMom.getValueIsAdjusting()) {
                 lbLValue.setText(String.format("%.2f", (double) sldrLMom.getValue() / 100));
@@ -594,9 +595,9 @@ public class Main extends javax.swing.JFrame {
         lbLValue.setText(String.format("%.2f", 0.0));
     }//GEN-LAST:event_rdoAllPlanetsActionPerformed
 
+    // All of the planets are added to the screen.
     private void setALL() {
         try {
-            // TODO add your handling code here:
             mass = .81;
             angMom = 3.000;
             URL url = this.getClass().getClassLoader().getResource("Resources/sVenus.png");
